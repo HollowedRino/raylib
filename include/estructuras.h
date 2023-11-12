@@ -17,6 +17,7 @@ class Mesh{
 class Triangulo{
     private:
     public:
+        int id;
         int vertice1; 
         int vertice2; 
         int vertice3; 
@@ -26,6 +27,7 @@ class Triangulo{
 class Vertice{
     private:
     public:
+        int id;
         Vector3 pos;
         Vertice* siguiente;
 };
