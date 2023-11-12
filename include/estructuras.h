@@ -12,7 +12,7 @@ class Mesh{
         Vertice* getVertice(int num);
         void crearTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
         void verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
-        
+        //FUnciono en el git
 };
 
 class Triangulo{
