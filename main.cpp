@@ -53,7 +53,7 @@ int main(void)
                 DrawTriangle3D(v1,v4,v3,RED);
                 DrawTriangle3D(v2,v3,v4,YELLOW);
 
-                DrawLine3D(v1,v2,BLACK);
+                DrawLine3D(v1,v2,BLACK);  
                 DrawLine3D(v1,v3,BLACK);
                 DrawLine3D(v1,v4,BLACK);
                 DrawLine3D(v2,v3,BLACK);
