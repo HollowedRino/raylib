@@ -9,10 +9,10 @@ class Mesh{
 
         Mesh();
         Triangulo* getTriangulo(int num);
-        void setTrianguloIni(Triangulo* trianguloIni);
         Vertice* getVertice(int num);
-        void setVertice(Vertice* vertice);
-        //xdxdxdxjgnsgkjdbfsakgjbndf
+        void crearTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
+        void verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
+        
 };
 
 class Triangulo{
