@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include <iostream>
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -25,6 +26,8 @@ int main(void)
     Vector3 v3 = { 9.0f, 0.0f, 0.0f };
     Vector3 v4 = { 0.0f, 9.0f, 0.0f };
 
+    std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
+
     DisableCursor();                    // Limit cursor to relative movement inside the window
 
     SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
@@ -50,7 +53,6 @@ int main(void)
             BeginMode3D(camera);
 
                 DrawTriangle3D(v1,v3,v2,BLUE);
-                
 
                 DrawLine3D(v1,v2,BLACK);  
                 DrawLine3D(v1,v3,BLACK);
