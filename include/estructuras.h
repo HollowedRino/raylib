@@ -9,7 +9,8 @@ class Mesh{
 
         Mesh();
         Triangulo* getTriangulo(int num);
-        Vector3 getVertice(int num);
+        Vector3 getVertice(int num); 
+        //Ya no es puntero porque vertice como tiene un valoro, accedes directamente a vector3 
         void anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
         void verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
 };
