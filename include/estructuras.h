@@ -6,18 +6,14 @@ class Mesh{
   public:
     Triangulo* trianguloIni; //deben ser 4 en total
     Vertice* verticeIni; 
-    int borrar;
+    int contadorTri;
+    int contadorVer;
     Mesh();
     Triangulo* getTriangulo(int id);
-    Vector3 getVertice(int num); 
+    Vector3 getVertice(int id); 
     //Ya no es puntero porque vertice como tiene un valoro, accedes directamente a vector3 
-    void anadirTriangulo(int id, Vector3 v1, Vector3 v2, Vector3 v3);
-    void verificarTriangulo(int id, Vector3 v1, Vector3 v2, Vector3 v3);
-
-    //contarParaTriangulos
-    
-    //contarVertices
-
+    void anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
+    void verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
 };
 
 class Triangulo{
