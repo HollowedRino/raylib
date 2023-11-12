@@ -6,7 +6,7 @@ class Mesh{
   public:
     Triangulo* trianguloIni; //deben ser 4 en total
     Vertice* verticeIni; 
-
+    int borrar;
     Mesh();
     Triangulo* getTriangulo(int id);
     Vector3 getVertice(int num); 
@@ -41,3 +41,5 @@ class Vertice{
 //requerimiento 1
 //Implementar una función llamada VerificarMesh que reciba un Mesh y devuelva un booleano
 //que indique si es un Mesh válido o no.
+
+//AAAA se logro.
