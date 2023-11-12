@@ -32,7 +32,7 @@ class Triangulo{
     Triangulo* siguiente;
 
     //constructor
-    Triangulo(int id, int v1, int v2, int v3);
+    Triangulo(int v1, int v2, int v3);
 
     //getters and setters
     void setVertice1(int v1);
@@ -52,7 +52,7 @@ class Vertice{
     Vertice* siguiente;
 
     //constructor
-    Vertice(int id, Vector3 pos);
+    Vertice(Vector3 pos);
 
     //getters and setters
     void setId(int id);
