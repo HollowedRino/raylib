@@ -4,13 +4,13 @@
 class Mesh{
     private:
     public:
-        Triangulo* trianguloIni;
+        Triangulo* trianguloIni; //deben ser 4 en total
         Vertice* verticeIni; 
 
         Mesh();
         Triangulo* getTriangulo(int num);
-        Vertice* getVertice(int num);
-        void crearTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
+        Vector3 getVertice(int num);
+        void anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
         void verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
 };
 

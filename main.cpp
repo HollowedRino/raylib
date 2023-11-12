@@ -43,15 +43,14 @@ int main(void)
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
-
+        // x mas importante que eje z
+        // eje X va de izquirda superior a derecha inferior, Z va de izquierda inferior a derecha superior
             ClearBackground(RAYWHITE);
 
             BeginMode3D(camera);
 
-                DrawTriangle3D(v1,v2,v3,BLUE);
-                DrawTriangle3D(v1,v2,v4,GREEN);
-                DrawTriangle3D(v1,v4,v3,RED);
-                DrawTriangle3D(v2,v3,v4,YELLOW);
+                DrawTriangle3D(v1,v3,v2,BLUE);
+                
 
                 DrawLine3D(v1,v2,BLACK);  
                 DrawLine3D(v1,v3,BLACK);
