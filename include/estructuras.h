@@ -6,6 +6,12 @@ class Mesh{
     public:
         Triangulo* trianguloIni;
         Vertice* verticeIni;
+
+        Mesh();
+        Triangulo* getTriangulo(int num);
+        void setTrianguloIni(Triangulo* trianguloIni);
+        Vertice* getVertice(int num);
+        void setVertice(Vertice* vertice);
 };
 
 class Triangulo{
