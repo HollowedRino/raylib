@@ -8,7 +8,7 @@
 
 3. VerificarTriangulo() //Sebas
 
-<!-- 4. getters y setters a las clases //walter -->
+4. getters y setters a las clases //walter
 
 5. constructores //walter
 
