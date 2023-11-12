@@ -8,8 +8,8 @@ class Mesh{
         Vertice* verticeIni; 
 
         Mesh();
-        Triangulo* getTriangulo(int num);
-        Vector3 getVertice(int num);
+        Triangulo* getTriangulo(int id);
+        Vector3 getVertice(int id);
         void anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
         void verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
 };
