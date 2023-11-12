@@ -12,6 +12,7 @@ class Mesh{
         void setTrianguloIni(Triangulo* trianguloIni);
         Vertice* getVertice(int num);
         void setVertice(Vertice* vertice);
+        //xdxdxdxjgnsgkjdbfsakgjbndf
 };
 
 class Triangulo{
