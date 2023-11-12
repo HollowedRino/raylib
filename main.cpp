@@ -60,7 +60,7 @@ int main(void)
                 DrawLine3D(v2,v4,BLACK);
                 DrawLine3D(v3,v4,BLACK);
 
-                DrawGrid(20, 1.0f);
+                
 
             EndMode3D();
 
