@@ -10,3 +10,21 @@ Mesh::Mesh(){
 void Mesh::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
