@@ -12,25 +12,30 @@ void Mesh::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
 }
 
 void Mesh::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
-  int indice1;
-  int indice2;
-  int indice3;
+  int indice1 = -1;
+  int indice2 = -1;
+  int indice3 = -1;
+  
   Vertice* listaTemporal = new Vertice(v1);
   listaTemporal->siguiente = new Vertice(v2);
   listaTemporal->siguiente->siguiente = new Vertice(v3);
-  if (verticeIni == nullptr){
-    Vertice* nuevoVertice = new Vertice(v1);
-    nuevoVertice->id = 0;
-    nuevoVertice->siguiente = new Vertice(v2);
-    nuevoVertice->siguiente->id = 1;
-    nuevoVertice->siguiente->siguiente = new Vertice(v3);
-    nuevoVertice->siguiente->siguiente->id = 2;
-    this->verticeIni = nuevoVertice;
-    this->contadorVer = 3;
-  } else{
-    Vertice* temp = this->verticeIni;
-    for (int i = 0; i < 3; i++){
-      /* code */
+  
+  while (listaTemporal != nullptr){
+    if (this->verticeIni == nullptr){
+      listaTemporal->id = 0;
+      indice1 = 0;
+      this->contadorVer++;
+      this->verticeIni = listaTemporal;
+      listaTemporal = listaTemporal->siguiente;
+    }else{
+      Vertice* listaFija = this->verticeIni; // listaFija lleva ese nombre porque es un puntero a la lista que si se queda, no porque vaya a ser una lista permanente
+      while (listaFija != listaTemporal && listaFija != nullptr){
+        listaFija = listaFija->siguiente;
+      }
+
+      if (/* condition */){
+        /* code */
+      }
     }
   }
 }
