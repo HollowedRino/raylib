@@ -16,25 +16,44 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   int indice2 = -1;
   int indice3 = -1;
   
-  Vertice* listaTemporal = new Vertice(v1);
-  listaTemporal->siguiente = new Vertice(v2);
-  listaTemporal->siguiente->siguiente = new Vertice(v3);
+  Vertice* temporal = new Vertice(v1);
+  temporal->siguiente = new Vertice(v2);
+  temporal->siguiente->siguiente = new Vertice(v3);
+  Vertice* anterior = nullptr; //su unico proposito es borrar los temporal que se repitan
   
-  while (listaTemporal != nullptr){
-    if (this->verticeIni == nullptr){
-      listaTemporal->id = 0;
+  while (temporal != nullptr){ 
+    if (this->verticeIni == nullptr){ //primer vertice
+      temporal->id = 0;
       indice1 = 0;
       this->contadorVer++;
-      this->verticeIni = listaTemporal;
-      listaTemporal = listaTemporal->siguiente;
+      this->verticeIni = temporal;
+      temporal = temporal->siguiente;
+      this->verticeIni->siguiente = nullptr;
     }else{
       Vertice* listaFija = this->verticeIni; // listaFija lleva ese nombre porque es un puntero a la lista que si se queda, no porque vaya a ser una lista permanente
-      while (listaFija != listaTemporal && listaFija != nullptr){
+      while (listaFija != temporal && listaFija != nullptr){
+        anterior = listaFija;
         listaFija = listaFija->siguiente;
       }
 
-      if (listaFija == nullptr){
-        /* code */
+      if (listaFija->pos.x == temporal->pos.x && listaFija->pos.y == temporal->pos.y && listaFija->pos.z == temporal->pos.z){
+        anterior = temporal;
+        temporal = temporal->siguiente;
+
+        delete anterior;
+      }else{
+        temporal->id = this->contadorVer;
+        if (indice1 == -1){
+          indice1 = this->contadorVer;
+        }else if(indice2 == -1){                                      //asignacion de vertices
+          indice2 = this->contadorVer;
+        }else{
+          indice3 = this->contadorVer;
+        }
+        this->contadorVer++;
+        listaFija->siguiente = temporal;
+        temporal = temporal->siguiente;
+        listaFija->siguiente->siguiente = nullptr;
       }
     }
   }
