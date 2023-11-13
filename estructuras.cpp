@@ -7,8 +7,21 @@ Mesh::Mesh(){
   this->contadorVer = 0;
 }
 
+void Mesh::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
+
+}
+
 void Mesh::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   if (verticeIni == nullptr){
+    Vertice* nuevoVertice = new Vertice(v1);
+    nuevoVertice->id = 0;
+    nuevoVertice->siguiente = new Vertice(v2);
+    nuevoVertice->siguiente->id = 1;
+    nuevoVertice->siguiente->siguiente = new Vertice(v3);
+    nuevoVertice->siguiente->siguiente->id = 2;
+    this->verticeIni = nuevoVertice;
+    this->contadorVer = 3;
+  } else{
     
   }
 }
