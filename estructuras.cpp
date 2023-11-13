@@ -12,6 +12,12 @@ void Mesh::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
 }
 
 void Mesh::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
+  int indice1;
+  int indice2;
+  int indice3;
+  Vertice* listaTemporal = new Vertice(v1);
+  listaTemporal->siguiente = new Vertice(v2);
+  listaTemporal->siguiente->siguiente = new Vertice(v3);
   if (verticeIni == nullptr){
     Vertice* nuevoVertice = new Vertice(v1);
     nuevoVertice->id = 0;
@@ -22,7 +28,10 @@ void Mesh::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
     this->verticeIni = nuevoVertice;
     this->contadorVer = 3;
   } else{
-    
+    Vertice* temp = this->verticeIni;
+    for (int i = 0; i < 3; i++){
+      /* code */
+    }
   }
 }
 
