@@ -1,4 +1,5 @@
 #include "raylib.h"
+#include "estructuras.h"
 #include <iostream>
 
 //------------------------------------------------------------------------------------

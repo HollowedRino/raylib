@@ -1,17 +1,17 @@
 #include "estructuras.h"
 
-Mesh::Mesh(){
+Mazacota::Mazacota(){
   this->trianguloIni = nullptr;
   this->verticeIni = nullptr;
   this->contadorTri = 0;
   this->contadorVer = 0;
 }
 
-void Mesh::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
+void Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
 
 }
 
-void Mesh::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
+void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   int indice1 = -1;
   int indice2 = -1;
   int indice3 = -1;
@@ -33,7 +33,7 @@ void Mesh::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
         listaFija = listaFija->siguiente;
       }
 
-      if (/* condition */){
+      if (listaFija == nullptr){
         /* code */
       }
     }
@@ -69,17 +69,17 @@ Vertice::Vertice(Vector3 pos){
 // ========== Lista de getters y setters ==========
 
 //=======================Getters and Setters==================
-//=======================Mesh=================================
-void Mesh::setTrianguloIni(Triangulo* t){
+//=======================Mazacota=================================
+void Mazacota::setTrianguloIni(Triangulo* t){
   this->trianguloIni = t;
 }
-void Mesh::setVerticeIni(Vertice* v){
+void Mazacota::setVerticeIni(Vertice* v){
   this->verticeIni = v;
 }
-Triangulo* Mesh::getTrianguloIni(){
+Triangulo* Mazacota::getTrianguloIni(){
   return this->trianguloIni;
 }
-Vertice* Mesh::getVerticeIni(){
+Vertice* Mazacota::getVerticeIni(){
   return this->verticeIni;
 }
 

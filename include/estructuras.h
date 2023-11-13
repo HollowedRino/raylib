@@ -1,27 +1,6 @@
 #pragma once
 #include "raylib.h"
 
-class Mesh{
-  private:
-  public:
-    Triangulo* trianguloIni; //deben ser 4 en total
-    Vertice* verticeIni; 
-    int contadorTri;
-    int contadorVer;
-    Mesh();
-    Triangulo* getTriangulo(int id);
-    Vector3 getVertice(int id); 
-    //Ya no es puntero porque vertice como tiene un valoro, accedes directamente a vector3 
-    void anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
-    void verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
-
-    //getters and setters
-    void setTrianguloIni(Triangulo* t);
-    void setVerticeIni(Vertice* v);
-    Triangulo* getTrianguloIni();
-    Vertice* getVerticeIni();
-};
-
 class Triangulo{
   private:
   public:
@@ -62,6 +41,29 @@ class Vertice{
     Vertice* getSiguiente();
 };
 
+class Mazacota{ //necesario cambiar nombre de clase
+  private:
+  public:
+    Triangulo* trianguloIni; //deben ser 4 en total
+    Vertice* verticeIni; 
+    int contadorTri;
+    int contadorVer;
+    Mazacota();
+    Triangulo* getTriangulo(int id);
+    Vector3 getVertice(int id); 
+    //Ya no es puntero porque vertice como tiene un valoro, accedes directamente a vector3 
+    void anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
+    void verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
+
+    //getters and setters
+    void setTrianguloIni(Triangulo* t);
+    void setVerticeIni(Vertice* v);
+    Triangulo* getTrianguloIni();
+    Vertice* getVerticeIni();
+};
+
+
+
 //requerimiento 1
-//Implementar una función llamada VerificarMesh que reciba un Mesh y devuelva un booleano
-//que indique si es un Mesh válido o no.
+//Implementar una función llamada VerificarMazacota que reciba un Mazacota y devuelva un booleano
+//que indique si es un Mazacota válido o no.
