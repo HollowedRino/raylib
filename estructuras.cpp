@@ -19,41 +19,51 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   Vertice* temporal = new Vertice(v1);
   temporal->siguiente = new Vertice(v2);
   temporal->siguiente->siguiente = new Vertice(v3);
-  Vertice* anterior = nullptr; //su unico proposito es borrar los temporal que se repitan
+  Vertice* anterior = nullptr; 
   
+  //Ingreso de vertices
   while (temporal != nullptr){ 
-    if (this->verticeIni == nullptr){ //primer vertice
-      temporal->id = 0;
+    //Primer vertice
+    if (this->verticeIni == nullptr){ 
       indice1 = 0;
       this->contadorVer++;
       this->verticeIni = temporal;
       temporal = temporal->siguiente;
       this->verticeIni->siguiente = nullptr;
-    }else{
-      Vertice* listaFija = this->verticeIni; // listaFija lleva ese nombre porque es un puntero a la lista que si se queda, no porque vaya a ser una lista permanente
-      while (listaFija != temporal && listaFija != nullptr){
+    }
+    //Los demas vertices
+    else{
+      //Posicionar puntero hasta completar la lista de vertices actuales o hasta encontrar un vertice igual
+      Vertice* listaFija = this->verticeIni; 
+      while (listaFija != nullptr){
+        if (listaFija->pos.x == temporal->pos.x && listaFija->pos.y == temporal->pos.y && listaFija->pos.z == temporal->pos.z){
+          if (indice1 == -1){
+            indice1 = listaFija->id;
+          }else if(indice2 == -1){
+            indice2 = listaFija->id;
+          }else{
+            indice3 = listaFija->id;
+          }
+          anterior = temporal;
+          temporal = temporal->siguiente;
+          delete anterior;
+          break;
+        }
         anterior = listaFija;
         listaFija = listaFija->siguiente;
       }
-
-      if (listaFija->pos.x == temporal->pos.x && listaFija->pos.y == temporal->pos.y && listaFija->pos.z == temporal->pos.z){
-        anterior = temporal;
-        temporal = temporal->siguiente;
-
-        delete anterior;
-      }else{
-        temporal->id = this->contadorVer;
+      if (listaFija == nullptr){
         if (indice1 == -1){
           indice1 = this->contadorVer;
-        }else if(indice2 == -1){                                      //asignacion de vertices
+        }else if(indice2 == -1){
           indice2 = this->contadorVer;
         }else{
           indice3 = this->contadorVer;
         }
         this->contadorVer++;
-        listaFija->siguiente = temporal;
+        anterior->siguiente = temporal;
         temporal = temporal->siguiente;
-        listaFija->siguiente->siguiente = nullptr;
+        listaFija->siguiente = nullptr;
       }
     }
   }
