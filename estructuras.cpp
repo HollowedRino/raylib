@@ -67,6 +67,19 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
       }
     }
   }
+  Triangulo* nuevoTriangulo = new Triangulo(indice1, indice2, indice3);
+  if (this->trianguloIni == nullptr){
+    this->trianguloIni = nuevoTriangulo;
+    this->contadorTri++;
+  }else{
+    Triangulo* temp = this->trianguloIni;
+    while (temp->siguiente != nullptr){
+      temp = temp->siguiente;
+    }
+    nuevoTriangulo->id = this->contadorTri;
+    temp->siguiente = nuevoTriangulo;
+    this->contadorTri++;
+  }
 }
 
 //=======================Triangulo=============================
