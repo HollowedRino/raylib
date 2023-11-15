@@ -36,16 +36,19 @@ int Mazacota::anadirVertice(Vector3 vertice){
       verticeFinal=nuevoVertice;
       contadorVer++;
       return nuevoVertice->id;
+      break;
     }else{
       if (puntero->pos.x == nuevoVertice->pos.x && puntero->pos.y == nuevoVertice->pos.y && puntero->pos.z == nuevoVertice->pos.z){
         delete nuevoVertice;
         return puntero->id;
+        break;
       }else if(puntero == nullptr){
         nuevoVertice->id = contadorVer;
         verticeFinal->siguiente = nuevoVertice;
         verticeFinal=nuevoVertice;
         contadorVer++;
         return nuevoVertice->id;
+        break;
       }
     }
     if(puntero != nullptr){
@@ -54,7 +57,7 @@ int Mazacota::anadirVertice(Vector3 vertice){
   }while(puntero != nullptr);
 }
 
-bool Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
+/*bool Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   if((triangulo->vertice2->pos.x < triangulo->vertice1->pos.x && triangulo->vertice3->pos.y < triangulo->vertice1->pos.y)||
     (triangulo->vertice2->pos.x > triangulo->vertice1->pos.x && triangulo->vertice3->pos.y > triangulo->vertice1->pos.y)||
     (triangulo->vertice2->pos.y < triangulo->vertice1->pos.x && triangulo->vertice3->pos.x > triangulo->vertice1->pos.y)||
@@ -63,7 +66,7 @@ bool Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
     }else{
       return false;
     }
-}
+}*/
 
 void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   int indice1 = anadirVertice(v1);
@@ -97,6 +100,30 @@ void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
   anadirVertice(v4);
 
   //Aqui solo sería llamar a la funcion de crear triangulos y ya estaría este requisito
+}
+
+Vector3 Mazacota::getVertice(int id){
+  Vertice* temp = this->verticeIni;
+  while (temp != nullptr){
+    if (temp->id == id){
+      return temp->pos;
+    }
+    temp = temp->siguiente;
+  }
+}
+
+void Mazacota::dibujarMesh(){
+  Triangulo* temp = this->trianguloIni;
+  while (temp != nullptr){
+    Vector3 vertice1 = getVertice(temp->vertice1);
+    Vector3 vertice2 = getVertice(temp->vertice2);
+    Vector3 vertice3 = getVertice(temp->vertice3);
+    DrawTriangle3D(vertice1, vertice2, vertice3, BLUE);
+    DrawLine3D(vertice1, vertice2, BLACK);
+    DrawLine3D(vertice1, vertice3, BLACK);
+    DrawLine3D(vertice2, vertice3, BLACK);
+    temp = temp->siguiente;
+  }
 }
 
 // ========== Lista de getters y setters ==========
