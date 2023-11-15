@@ -1,4 +1,3 @@
-#include "raylib.h"
 #include "estructuras.h"
 #include <iostream>
 
@@ -28,11 +27,7 @@ int main(void)
   Vector3 v3 = { 9.0f, 0.0f, 0.0f };
   Vector3 v4 = { 0.0f, 9.0f, 0.0f };
 
-  Mazacota mesh = Mazacota();
-  mesh.anadirTriangulo(v1, v2, v3);
-  mesh.anadirTriangulo(v1, v3, v4);
-  mesh.anadirTriangulo(v2, v3, v4);
-  mesh.anadirTriangulo(v1, v2, v4);
+  Mazacota* mesh = new Mazacota();
 
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
 
@@ -60,7 +55,14 @@ int main(void)
 
           BeginMode3D(camera);
 
-              mesh.dibujarMesh();
+              DrawTriangle3D(v1,v3,v2,BLUE);
+
+              DrawLine3D(v1,v2,BLACK);  
+              DrawLine3D(v1,v3,BLACK);
+              DrawLine3D(v1,v4,BLACK);
+              DrawLine3D(v2,v3,BLACK);
+              DrawLine3D(v2,v4,BLACK);
+              DrawLine3D(v3,v4,BLACK);
 
               DrawGrid(20, 1.0f);
 
