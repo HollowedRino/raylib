@@ -82,7 +82,19 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
 
 }
 
+void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
+{
+  Vector3 v1 = {posicion.x,posicion.y,posicion.z};
+  Vector3 v2 = {posicion.x+ancho,posicion.y,posicion.z};
+  Vector3 v3 = {posicion.x,posicion.y+alto,posicion.z};
+  Vector3 v4 = {posicion.x+ancho,posicion.y+alto,posicion.z};
+  anadirVertice(v1);
+  anadirVertice(v2);
+  anadirVertice(v3);
+  anadirVertice(v4);
 
+  //Aqui solo sería llamar a la funcion de crear triangulos y ya estaría este requisito
+}
 
 
 

@@ -58,6 +58,9 @@ class Mazacota{ //necesario cambiar nombre de clase
     void anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
     bool verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
 
+    //requisitos (por el momento los pondre aquí, pero si quieren mejorar el orden despues podemos
+    // moverlos a otros .h)
+    void crearRectangulo(int ancho, int alto, Vector3 posicion);    
     //getters and setters
     void setTrianguloIni(Triangulo* t);
     void setVerticeIni(Vertice* v);
