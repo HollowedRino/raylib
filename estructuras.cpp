@@ -40,10 +40,108 @@ void Mazacota::anadirVertice(float x, float y, float z){
   contadorVert++;
 }
 
-void Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
+bool Mazacota::verificarTriangulo(Triangulo* triangulo){
+  if((triangulo->vertice2->pos.x < triangulo->vertice1->pos.x && triangulo->vertice3->pos.y < triangulo->vertice1->pos.y)||
+    (triangulo->vertice2->pos.x > triangulo->vertice1->pos.x && triangulo->vertice3->pos.y > triangulo->vertice1->pos.y)||
+    (triangulo->vertice2->pos.y < triangulo->vertice1->pos.x && triangulo->vertice3->pos.x > triangulo->vertice1->pos.y)||
+    (triangulo->vertice2->pos.y > triangulo->vertice1->pos.x && triangulo->vertice3->pos.x < triangulo->vertice1->pos.y)){
+      return true;
+    }else{
+      return false;
+    }
+}
+
+void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
+  Triangulo* nuevoTriangulo = new Triangulo(v1,v2,v3);
+  if(verificarTriangulo(nuevoTriangulo)){
+    if(trianguloIni==nullptr){
+      trianguloIni=nuevoTriangulo;
+      trianguloFinal=nuevoTriangulo;
+    }else{
+      trianguloFinal->siguiente = nuevoTriangulo;
+      trianguloFinal=nuevoTriangulo;
+    }
+  }else{
+    std::cout<"Coloca los vertices bonito p"<<std::endl;
+  }
 
 }
 
+
+
+
+
+
+
+
+
+
+
+// ========== Lista de getters y setters ==========
+
+//=======================Getters and Setters==================
+//=======================Mazacota=================================
+void Mazacota::setTrianguloIni(Triangulo* t){
+  this->trianguloIni = t;
+}
+void Mazacota::setVerticeIni(Vertice* v){
+  this->verticeIni = v;
+}
+Triangulo* Mazacota::getTrianguloIni(){
+  return this->trianguloIni;
+}
+Vertice* Mazacota::getVerticeIni(){
+  return this->verticeIni;
+}
+
+//=======================Triangulo=============================
+void Triangulo::setVertice1(int v1){
+  this->vertice1 = v1;
+}
+void Triangulo::setVertice2(int v2){
+  this->vertice2 = v2;
+}
+void Triangulo::setVertice3(int v3){
+  this->vertice3 = v3;
+}
+int Triangulo::getId(){
+  return this->id;
+}
+int Triangulo::getVertice1(){
+  return this->vertice1;
+}
+int Triangulo::getVertice2(){
+  return this->vertice2;
+}
+int Triangulo::getVertice3(){
+  return this->vertice3;
+}
+
+//=======================Vertice==============================
+void Vertice::setId(int id){
+  this->id = id;
+}
+void Vertice::setPos(Vector3 pos){
+  this->pos = pos;
+}
+int Vertice::getId(){
+  return this->id;
+}
+Vector3 Vertice::getPos(){
+  return this->pos;
+}
+Vertice* Vertice::getSiguiente(){
+  return this->siguiente;
+}
+
+
+
+
+
+
+
+
+/* anadir de Sebas
 void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   int indice1 = -1;
   int indice2 = -1;
@@ -114,70 +212,4 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
     this->contadorTri++;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-// ========== Lista de getters y setters ==========
-
-//=======================Getters and Setters==================
-//=======================Mazacota=================================
-void Mazacota::setTrianguloIni(Triangulo* t){
-  this->trianguloIni = t;
-}
-void Mazacota::setVerticeIni(Vertice* v){
-  this->verticeIni = v;
-}
-Triangulo* Mazacota::getTrianguloIni(){
-  return this->trianguloIni;
-}
-Vertice* Mazacota::getVerticeIni(){
-  return this->verticeIni;
-}
-
-//=======================Triangulo=============================
-void Triangulo::setVertice1(int v1){
-  this->vertice1 = v1;
-}
-void Triangulo::setVertice2(int v2){
-  this->vertice2 = v2;
-}
-void Triangulo::setVertice3(int v3){
-  this->vertice3 = v3;
-}
-int Triangulo::getId(){
-  return this->id;
-}
-int Triangulo::getVertice1(){
-  return this->vertice1;
-}
-int Triangulo::getVertice2(){
-  return this->vertice2;
-}
-int Triangulo::getVertice3(){
-  return this->vertice3;
-}
-
-//=======================Vertice==============================
-void Vertice::setId(int id){
-  this->id = id;
-}
-void Vertice::setPos(Vector3 pos){
-  this->pos = pos;
-}
-int Vertice::getId(){
-  return this->id;
-}
-Vector3 Vertice::getPos(){
-  return this->pos;
-}
-Vertice* Vertice::getSiguiente(){
-  return this->siguiente;
-}
+*/
