@@ -1,11 +1,10 @@
 #include "estructuras.h"
-#include <iostream>
 
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-int main(void)
-{
+
+int main(){
     
   // Initialization
   //--------------------------------------------------------------------------------------
@@ -27,8 +26,9 @@ int main(void)
   Vector3 v3 = { 9.0f, 0.0f, 0.0f };
   Vector3 v4 = { 0.0f, 9.0f, 0.0f };
 
-  Mazacota* mesh = new Mazacota();
+  Mazacota mesh;
 
+  mesh.anadirTriangulo(v1, v2, v3);
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
 
   DisableCursor();                    // Limit cursor to relative movement inside the window
