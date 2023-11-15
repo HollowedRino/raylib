@@ -82,7 +82,7 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
 // ========== Lista de getters y setters ==========
 
 //=======================Getters and Setters==================
-//=======================Mazacota=================================
+//=======================Mazacota================================
 void Mazacota::setTrianguloIni(Triangulo* t){
   this->trianguloIni = t;
 }
