@@ -26,9 +26,8 @@ Vertice::Vertice(Vector3 pos){
   this->id = 0;
 }
 
-//================Métodos de Mazacueta======================
-void Mazacota::anadirVertice(float x, float y, float z){
-  Vector3 vertice ={x,y,z};
+//================Métodos de Mazacueta=====================
+int Mazacota::anadirVertice(Vector3 vertice){
   Vertice* nuevoVertice = new Vertice(vertice);
   if(this->verticeIni==nullptr){
     verticeIni=nuevoVertice;
