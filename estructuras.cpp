@@ -27,20 +27,32 @@ Vertice::Vertice(Vector3 pos){
 }
 
 //================Métodos de Mazacueta======================
-void Mazacota::anadirVertice(float x, float y, float z){
-  Vector3 vertice ={x,y,z};
+int Mazacota::anadirVertice(Vector3 vertice){
   Vertice* nuevoVertice = new Vertice(vertice);
-  if(this->verticeIni==nullptr){
-    verticeIni=nuevoVertice;
-    verticeFinal=nuevoVertice;
-  }else{
-    verticeFinal->siguiente = nuevoVertice;
-    verticeFinal=nuevoVertice;
-  }
-  contadorVer++;
+  Vertice* puntero = this->verticeIni;
+  do{
+    if(this->verticeIni==nullptr){
+      verticeIni=nuevoVertice;
+      verticeFinal=nuevoVertice;
+      contadorVer++;
+      return contadorVer-1;
+    }else{
+      if (puntero->pos.x == nuevoVertice->pos.x && puntero->pos.y == nuevoVertice->pos.y && puntero->pos.z == nuevoVertice->pos.z){
+        
+      }else if(puntero == nullptr){
+        nuevoVertice->id = contadorVer;
+        verticeFinal->siguiente = nuevoVertice;
+        verticeFinal=nuevoVertice;
+        contadorVer++;
+      }
+    }
+    if(puntero != nullptr){
+      puntero = puntero->siguiente;
+    }
+  }while(puntero != nullptr);
 }
 
-bool Mazacota::verificarTriangulo(Triangulo* triangulo){
+bool Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   if((triangulo->vertice2->pos.x < triangulo->vertice1->pos.x && triangulo->vertice3->pos.y < triangulo->vertice1->pos.y)||
     (triangulo->vertice2->pos.x > triangulo->vertice1->pos.x && triangulo->vertice3->pos.y > triangulo->vertice1->pos.y)||
     (triangulo->vertice2->pos.y < triangulo->vertice1->pos.x && triangulo->vertice3->pos.x > triangulo->vertice1->pos.y)||
@@ -66,16 +78,6 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   }
 
 }
-
-
-
-
-
-
-
-
-
-
 
 // ========== Lista de getters y setters ==========
 
@@ -135,81 +137,79 @@ Vertice* Vertice::getSiguiente(){
 }
 
 
-
-
-
-
-
-
-/* anadir de Sebas
+// anadir de Sebas
 void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
-  int indice1 = -1;
-  int indice2 = -1;
-  int indice3 = -1;
-  
-  Vertice* temporal = new Vertice(v1);
-  temporal->siguiente = new Vertice(v2);
-  temporal->siguiente->siguiente = new Vertice(v3);
-  Vertice* anterior = nullptr; 
-  
-  //Ingreso de vertices
-  while (temporal != nullptr){ 
-    //Primer vertice
-    if (this->verticeIni == nullptr){ 
-      indice1 = 0;
-      this->contadorVer++;
-      this->verticeIni = temporal;
-      temporal = temporal->siguiente;
-      this->verticeIni->siguiente = nullptr;
-    }
-    //Los demas vertices
-    else{
-      //Posicionar puntero hasta completar la lista de vertices actuales o hasta encontrar un vertice igual
-      Vertice* listaFija = this->verticeIni; 
-      while (listaFija != nullptr){
-        if (listaFija->pos.x == temporal->pos.x && listaFija->pos.y == temporal->pos.y && listaFija->pos.z == temporal->pos.z){
-          if (indice1 == -1){
-            indice1 = listaFija->id;
-          }else if(indice2 == -1){
-            indice2 = listaFija->id;
-          }else{
-            indice3 = listaFija->id;
-          }
-          anterior = temporal;
-          temporal = temporal->siguiente;
-          delete anterior;
-          break;
-        }
-        anterior = listaFija;
-        listaFija = listaFija->siguiente;
-      }
-      if (listaFija == nullptr){
-        if (indice1 == -1){
-          indice1 = this->contadorVer;
-        }else if(indice2 == -1){
-          indice2 = this->contadorVer;
-        }else{
-          indice3 = this->contadorVer;
-        }
+
+  if(this->verificarTriangulo(v1, v2, v3)){
+    int indice1 = -1;
+    int indice2 = -1;
+    int indice3 = -1;
+    
+    Vertice* temporal = new Vertice(v1);
+    temporal->siguiente = new Vertice(v2);
+    temporal->siguiente->siguiente = new Vertice(v3);
+    Vertice* anterior = nullptr; 
+    
+    //Ingreso de vertices
+    while (temporal != nullptr){ 
+      //Primer vertice
+      if (this->verticeIni == nullptr){ 
+        indice1 = 0;
         this->contadorVer++;
-        anterior->siguiente = temporal;
+        this->verticeIni = temporal;
         temporal = temporal->siguiente;
-        listaFija->siguiente = nullptr;
+        this->verticeIni->siguiente = nullptr;
+      }
+      //Los demas vertices
+      else{
+        //Posicionar puntero hasta completar la lista de vertices actuales o hasta encontrar un vertice igual
+        Vertice* listaFija = this->verticeIni; 
+        while (listaFija != nullptr){
+          if (listaFija->pos.x == temporal->pos.x && listaFija->pos.y == temporal->pos.y && listaFija->pos.z == temporal->pos.z){
+            if (indice1 == -1){
+              indice1 = listaFija->id;
+            }else if(indice2 == -1){
+              indice2 = listaFija->id;
+            }else{
+              indice3 = listaFija->id;
+            }
+            anterior = temporal;
+            temporal = temporal->siguiente;
+            delete anterior;
+            break;
+          }
+          anterior = listaFija;
+          listaFija = listaFija->siguiente;
+        }
+        if (listaFija == nullptr){
+          if (indice1 == -1){
+            indice1 = this->contadorVer;
+          }else if(indice2 == -1){
+            indice2 = this->contadorVer;
+          }else{
+            indice3 = this->contadorVer;
+          }
+          this->contadorVer++;
+          anterior->siguiente = temporal;
+          temporal = temporal->siguiente;
+          listaFija->siguiente = nullptr;
+        }
       }
     }
-  }
-  Triangulo* nuevoTriangulo = new Triangulo(indice1, indice2, indice3);
-  if (this->trianguloIni == nullptr){
-    this->trianguloIni = nuevoTriangulo;
-    this->contadorTri++;
-  }else{
-    Triangulo* temp = this->trianguloIni;
-    while (temp->siguiente != nullptr){
-      temp = temp->siguiente;
+    Triangulo* nuevoTriangulo = new Triangulo(indice1, indice2, indice3);
+    if (this->trianguloIni == nullptr){
+      this->trianguloIni = nuevoTriangulo;
+      this->contadorTri++;
+    }else{
+      Triangulo* temp = this->trianguloIni;
+      while (temp->siguiente != nullptr){
+        temp = temp->siguiente;
+      }
+      nuevoTriangulo->id = this->contadorTri;
+      temp->siguiente = nuevoTriangulo;
+      this->contadorTri++;
     }
-    nuevoTriangulo->id = this->contadorTri;
-    temp->siguiente = nuevoTriangulo;
-    this->contadorTri++;
+  }else{
+    std::cout<<"Coloca los vertices bonito pe, no seas mongol"<<std::endl;
   }
 }
-*/

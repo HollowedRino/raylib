@@ -54,9 +54,9 @@ class Mazacota{ //necesario cambiar nombre de clase
     Triangulo* getTriangulo(int id);
     Vector3 getVertice(int id); 
     //Ya no es puntero porque vertice como tiene un valoro, accedes directamente a vector3 
-    void anadirVertice(float x, float y, float z);
+    int anadirVertice(Vector3 vertice);
     void anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
-    bool verificarTriangulo(Triangulo* triangulo);
+    bool verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
 
     //getters and setters
     void setTrianguloIni(Triangulo* t);
