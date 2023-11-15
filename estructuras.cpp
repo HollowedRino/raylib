@@ -34,16 +34,19 @@ int Mazacota::anadirVertice(Vector3 vertice){
     if(this->verticeIni==nullptr){
       verticeIni=nuevoVertice;
       verticeFinal=nuevoVertice;
+      id=contadorVer;
       contadorVer++;
-      return contadorVer-1;
+      return id;
     }else{
       if (puntero->pos.x == nuevoVertice->pos.x && puntero->pos.y == nuevoVertice->pos.y && puntero->pos.z == nuevoVertice->pos.z){
-        
+        break;
       }else if(puntero == nullptr){
         nuevoVertice->id = contadorVer;
         verticeFinal->siguiente = nuevoVertice;
         verticeFinal=nuevoVertice;
+        id=contadorVer;
         contadorVer++;
+        return id;
       }
     }
     if(puntero != nullptr){
@@ -153,7 +156,7 @@ Vertice* Vertice::getSiguiente(){
 
 
 
-/* anadir de Sebas
+// anadir de Sebas
 void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   int indice1 = -1;
   int indice2 = -1;
@@ -224,4 +227,3 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
     this->contadorTri++;
   }
 }
-*/
