@@ -7,6 +7,28 @@ Mazacota::Mazacota(){
   this->contadorVer = 0;
 }
 
+//=======================Triangulo=============================
+Triangulo::Triangulo(int v1, int v2, int v3){
+  this->vertice1 = v1;
+  this->vertice2 = v2;
+  this->vertice3 = v3;
+  this->siguiente = nullptr;
+  this->id = 0;
+}
+
+//=======================Vertice==============================
+
+Vertice::Vertice(Vector3 pos){
+  this->pos = pos;
+  this->siguiente = nullptr;
+  this->id = 0;
+}
+
+//================Métodos de Mazacueta======================
+void Mazacota::anadirVertice(float x, float y, float z){
+  
+}
+
 void Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
 
 }
@@ -82,22 +104,6 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   }
 }
 
-//=======================Triangulo=============================
-Triangulo::Triangulo(int v1, int v2, int v3){
-  this->vertice1 = v1;
-  this->vertice2 = v2;
-  this->vertice3 = v3;
-  this->siguiente = nullptr;
-  this->id = 0;
-}
-
-//=======================Vertice==============================
-
-Vertice::Vertice(Vector3 pos){
-  this->pos = pos;
-  this->siguiente = nullptr;
-  this->id = 0;
-}
 
 
 
