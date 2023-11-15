@@ -29,17 +29,30 @@ Vertice::Vertice(Vector3 pos){
 //================Métodos de Mazacueta======================
 int Mazacota::anadirVertice(Vector3 vertice){
   Vertice* nuevoVertice = new Vertice(vertice);
-  if(this->verticeIni==nullptr){
-    verticeIni=nuevoVertice;
-    verticeFinal=nuevovertice;
-  }else{
-    verticeFinal->siguiente = nuevoVertice;
-    verticeFinal=nuevoVertice;
-  }
-  contadorVert++;
+  Vertice* puntero = this->verticeIni;
+  do{
+    if(this->verticeIni==nullptr){
+      verticeIni=nuevoVertice;
+      verticeFinal=nuevoVertice;
+      contadorVer++;
+      return contadorVer-1;
+    }else{
+      if (puntero->pos.x == nuevoVertice->pos.x && puntero->pos.y == nuevoVertice->pos.y && puntero->pos.z == nuevoVertice->pos.z){
+        
+      }else if(puntero == nullptr){
+        nuevoVertice->id = contadorVer;
+        verticeFinal->siguiente = nuevoVertice;
+        verticeFinal=nuevoVertice;
+        contadorVer++;
+      }
+    }
+    if(puntero != nullptr){
+      puntero = puntero->siguiente;
+    }
+  }while(puntero != nullptr);
 }
 
-bool Mazacota::verificarTriangulo(Triangulo* triangulo){
+bool Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   if((triangulo->vertice2->pos.x < triangulo->vertice1->pos.x && triangulo->vertice3->pos.y < triangulo->vertice1->pos.y)||
     (triangulo->vertice2->pos.x > triangulo->vertice1->pos.x && triangulo->vertice3->pos.y > triangulo->vertice1->pos.y)||
     (triangulo->vertice2->pos.y < triangulo->vertice1->pos.x && triangulo->vertice3->pos.x > triangulo->vertice1->pos.y)||
@@ -61,7 +74,7 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
       trianguloFinal=nuevoTriangulo;
     }
   }else{
-    std::cout<"Coloca los vertices bonito p"<<endl;
+    std::cout<<"Coloca los vertices bonito p"<<std::endl;
   }
 
 }
