@@ -1,6 +1,6 @@
 #pragma once
 #include "raylib.h"
-
+#include <iostream>
 class Triangulo{
   private:
   public:
@@ -44,8 +44,10 @@ class Vertice{
 class Mazacota{ //necesario cambiar nombre de clase
   private:
   public:
-    Triangulo* trianguloIni; //deben ser 4 en total
-    Vertice* verticeIni; 
+    Triangulo* trianguloIni;
+    Triangulo* trianguloFinal; //deben ser 4 en total
+    Vertice* verticeIni;
+    Vertice* verticeFinal; 
     int contadorTri;
     int contadorVer;
     Mazacota();

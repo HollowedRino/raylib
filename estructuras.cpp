@@ -32,12 +32,12 @@ void Mazacota::anadirVertice(float x, float y, float z){
   Vertice* nuevoVertice = new Vertice(vertice);
   if(this->verticeIni==nullptr){
     verticeIni=nuevoVertice;
-    verticeFinal=nuevovertice;
+    verticeFinal=nuevoVertice;
   }else{
     verticeFinal->siguiente = nuevoVertice;
     verticeFinal=nuevoVertice;
   }
-  contadorVert++;
+  contadorVer++;
 }
 
 bool Mazacota::verificarTriangulo(Triangulo* triangulo){
@@ -62,7 +62,7 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
       trianguloFinal=nuevoTriangulo;
     }
   }else{
-    std::cout<"Coloca los vertices bonito p"<<std::endl;
+    std::cout<<"Coloca los vertices bonito p"<<std::endl;
   }
 
 }
