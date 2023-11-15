@@ -34,19 +34,18 @@ int Mazacota::anadirVertice(Vector3 vertice){
     if(this->verticeIni==nullptr){
       verticeIni=nuevoVertice;
       verticeFinal=nuevoVertice;
-      id=contadorVer;
       contadorVer++;
-      return id;
+      return nuevoVertice->id;
     }else{
       if (puntero->pos.x == nuevoVertice->pos.x && puntero->pos.y == nuevoVertice->pos.y && puntero->pos.z == nuevoVertice->pos.z){
-        break;
+        delete nuevoVertice;
+        return puntero->id;
       }else if(puntero == nullptr){
         nuevoVertice->id = contadorVer;
         verticeFinal->siguiente = nuevoVertice;
         verticeFinal=nuevoVertice;
-        id=contadorVer;
         contadorVer++;
-        return id;
+        return nuevoVertice->id;
       }
     }
     if(puntero != nullptr){
@@ -67,19 +66,23 @@ bool Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
 }
 
 void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
-  Triangulo* nuevoTriangulo = new Triangulo(v1,v2,v3);
-  if(verificarTriangulo(nuevoTriangulo)){
-    if(trianguloIni==nullptr){
-      trianguloIni=nuevoTriangulo;
-      trianguloFinal=nuevoTriangulo;
-    }else{
-      trianguloFinal->siguiente = nuevoTriangulo;
-      trianguloFinal=nuevoTriangulo;
-    }
+  int indice1 = anadirVertice(v1);
+  int indice2 = anadirVertice(v2);
+  int indice3 = anadirVertice(v3);
+  
+  Triangulo* nuevoTriangulo = new Triangulo(indice1, indice2, indice3);
+  if (this->trianguloIni == nullptr){
+    this->trianguloIni = nuevoTriangulo;
+    this->contadorTri++;
   }else{
-    std::cout<<"Coloca los vertices bonito p"<<std::endl;
+    Triangulo* temp = this->trianguloIni;
+    while (temp->siguiente != nullptr){
+      temp = temp->siguiente;
+    }
+    nuevoTriangulo->id = this->contadorTri;
+    temp->siguiente = nuevoTriangulo;
+    this->contadorTri++;
   }
-
 }
 
 void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
@@ -95,14 +98,6 @@ void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
 
   //Aqui solo sería llamar a la funcion de crear triangulos y ya estaría este requisito
 }
-
-
-
-
-
-
-
-
 
 // ========== Lista de getters y setters ==========
 
@@ -161,81 +156,3 @@ Vertice* Vertice::getSiguiente(){
   return this->siguiente;
 }
 
-
-
-
-
-
-
-
-// anadir de Sebas
-void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
-  int indice1 = -1;
-  int indice2 = -1;
-  int indice3 = -1;
-  
-  Vertice* temporal = new Vertice(v1);
-  temporal->siguiente = new Vertice(v2);
-  temporal->siguiente->siguiente = new Vertice(v3);
-  Vertice* anterior = nullptr; 
-  
-  //Ingreso de vertices
-  while (temporal != nullptr){ 
-    //Primer vertice
-    if (this->verticeIni == nullptr){ 
-      indice1 = 0;
-      this->contadorVer++;
-      this->verticeIni = temporal;
-      temporal = temporal->siguiente;
-      this->verticeIni->siguiente = nullptr;
-    }
-    //Los demas vertices
-    else{
-      //Posicionar puntero hasta completar la lista de vertices actuales o hasta encontrar un vertice igual
-      Vertice* listaFija = this->verticeIni; 
-      while (listaFija != nullptr){
-        if (listaFija->pos.x == temporal->pos.x && listaFija->pos.y == temporal->pos.y && listaFija->pos.z == temporal->pos.z){
-          if (indice1 == -1){
-            indice1 = listaFija->id;
-          }else if(indice2 == -1){
-            indice2 = listaFija->id;
-          }else{
-            indice3 = listaFija->id;
-          }
-          anterior = temporal;
-          temporal = temporal->siguiente;
-          delete anterior;
-          break;
-        }
-        anterior = listaFija;
-        listaFija = listaFija->siguiente;
-      }
-      if (listaFija == nullptr){
-        if (indice1 == -1){
-          indice1 = this->contadorVer;
-        }else if(indice2 == -1){
-          indice2 = this->contadorVer;
-        }else{
-          indice3 = this->contadorVer;
-        }
-        this->contadorVer++;
-        anterior->siguiente = temporal;
-        temporal = temporal->siguiente;
-        listaFija->siguiente = nullptr;
-      }
-    }
-  }
-  Triangulo* nuevoTriangulo = new Triangulo(indice1, indice2, indice3);
-  if (this->trianguloIni == nullptr){
-    this->trianguloIni = nuevoTriangulo;
-    this->contadorTri++;
-  }else{
-    Triangulo* temp = this->trianguloIni;
-    while (temp->siguiente != nullptr){
-      temp = temp->siguiente;
-    }
-    nuevoTriangulo->id = this->contadorTri;
-    temp->siguiente = nuevoTriangulo;
-    this->contadorTri++;
-  }
-}
