@@ -3,6 +3,8 @@
 Mazacota::Mazacota(){
   this->trianguloIni = nullptr;
   this->verticeIni = nullptr;
+  this->trianguloFinal = nullptr;
+  this->verticeFinal = nullptr;
   this->contadorTri = 0;
   this->contadorVer = 0;
 }
@@ -26,7 +28,16 @@ Vertice::Vertice(Vector3 pos){
 
 //================Métodos de Mazacueta======================
 void Mazacota::anadirVertice(float x, float y, float z){
-  
+  Vector3 vertice ={x,y,z};
+  Vertice* nuevoVertice = new Vertice(vertice);
+  if(this->verticeIni==nullptr){
+    verticeIni=nuevoVertice;
+    verticeFinal=nuevovertice;
+  }else{
+    verticeFinal->siguiente = nuevoVertice;
+    verticeFinal=nuevoVertice;
+  }
+  contadorVert++;
 }
 
 void Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
