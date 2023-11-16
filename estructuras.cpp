@@ -214,6 +214,24 @@ void Mazacota::PintarRectangulo(Mazacota* mesh)
 
 }
 
+void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
+{
+  Vertice* vertice = mesh->verticeIni;
+  float diferenciaX = destino.x - vertice->pos.x;
+  float diferenciaY = destino.y - vertice->pos.y;
+  float diferenciaZ = destino.z - vertice->pos.z;
+  while (vertice!=nullptr)
+  {
+    vertice->pos.x = vertice->pos.x + diferenciaX;
+    vertice->pos.y = vertice->pos.y + diferenciaY;
+    vertice->pos.z = vertice->pos.z + diferenciaZ;
+
+    vertice=vertice->siguiente;
+
+  }
+  
+}
+
 void Mazacota::crearCubo(int largo, Vector3 posicion) {
   Vector3 v1 = {posicion.x,posicion.y,posicion.z};
   Vector3 v2 = {posicion.x+largo,posicion.y,posicion.z};
