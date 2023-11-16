@@ -35,6 +35,7 @@ int main(){
   mesh->anadirTriangulo(v2,v4,v3);
   std::cout<<mesh->verificarTriangulo(v1,v2,v3)<<std::endl;
   std::cout<<mesh->verificarTriangulo(v1,v3,v2)<<std::endl;
+  std::cout << mesh->verificarMesh(mesh) << std::endl;
   //mesh->crearRectangulo(3,2,v1);
 
   

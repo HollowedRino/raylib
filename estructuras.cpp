@@ -138,22 +138,23 @@ void Mazacota::dibujarMesh(){
 
 bool Mazacota::verificarMesh(Mazacota *mesh)
 {
-  Triangulo* triActual=this->trianguloIni;
-  Triangulo* triComparador=this->trianguloIni;
+  Triangulo* triActual=mesh->trianguloIni;
+  Triangulo* triComparador=mesh->trianguloIni;
   bool valido = false;
   while (triActual != nullptr){
     while (triComparador != nullptr){ 
       if (triActual == triComparador){
         break;
-      }else if(triComparador->vertice1 == triActual->vertice1 || triComparador->vertice1 == triActual->vertice2 || triComparador->vertice1 == triActual->vertice3 ||
-               triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice3){
+      }else if((triComparador->vertice1 == triActual->vertice1 && (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3)) ||
+               (triComparador->vertice1 == triActual->vertice2 && (triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice1)) ||
+               (triComparador->vertice1 == triActual->vertice3 && (triComparador->vertice2 == triActual->vertice1 || triComparador->vertice3 == triActual->vertice2))){
         valido = true;
         break;
       }
       triComparador = triComparador->siguiente;
     } 
     triActual = triActual->siguiente;
-    triComparador=this->trianguloIni;
+    triComparador=mesh->trianguloIni;
   } 
   return valido; 
 }
