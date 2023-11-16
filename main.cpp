@@ -28,6 +28,7 @@ int main(){
   Vector3 v3 = { 9.0f, 0.0f, 0.0f };
   Vector3 v4 = { 0.0f, 9.0f, 0.0f };
   Vector3 v5 = { -9.0f, 9.0f, 0.0f };
+  Vector3 pruebaMover= {1.0f,1.0f,1.0f};
 
   Mazacota* mesh = new Mazacota();
   mesh->anadirTriangulo(v1,v2,v3);
@@ -38,6 +39,7 @@ int main(){
   std::cout << mesh->verificarMesh(mesh) << std::endl;
   //mesh->crearRectangulo(3,2,v1);
   Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,1);
+  rectangulo->MoverMesh(rectangulo,pruebaMover);
   
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
 

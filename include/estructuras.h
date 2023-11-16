@@ -65,7 +65,8 @@ class Mazacota{ //necesario cambiar nombre de clase
     bool verificarMesh(Mazacota* mesh);
     Mazacota* crearRectangulo(int ancho, int alto, Vector3 posicion, int plano);
 
-    void PintarRectangulo(Mazacota* mesh);  
+    void PintarRectangulo(Mazacota* mesh);
+    void MoverMesh(Mazacota* mesh, Vector3 destino);  
     //getters and setters
     void setTrianguloIni(Triangulo* t);
     void setVerticeIni(Vertice* v);
