@@ -40,6 +40,9 @@ int main(){
   Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,3);
   //rectangulo->MoverMesh(rectangulo,pruebaMover);
   
+  //crear cubo
+  Mazacota* cubo = mesh->crearCubo(5,v1);
+
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
 
   DisableCursor();                    // Limit cursor to relative movement inside the window
