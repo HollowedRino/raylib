@@ -71,6 +71,8 @@ int main(){
               rectangulo->PintarRectangulo(rectangulo);
               mesh->dibujarMesh();
 
+              cubo->PintarRectangulo(cubo);
+
               DrawLine3D(v1,v2,ORANGE);
               DrawLine3D(v1,v3,GREEN);
               DrawLine3D(v1,v4,RED);
