@@ -228,13 +228,48 @@ void Mazacota::PintarRectangulo(Mazacota* mesh)
 
 }
 
-void Mazacota::crearCubo (int largo, Vector3 posicion) {
+Mazacota* Mazacota::crearCubo (int largo, Vector3 posicion) {
+  Mazacota* cubo = new Mazacota();
+
   Vector3 v1 = {posicion.x,posicion.y,posicion.z};
   Vector3 v2 = {posicion.x+largo,posicion.y,posicion.z};
   Vector3 v3 = {posicion.x,posicion.y+largo,posicion.z};
   Vector3 v4 = {posicion.x+largo,posicion.y+largo,posicion.z};
 
-  crearRectangulo(largo, largo, posicion);
+
+  Vector3 v5 = {posicion.x,posicion.y,posicion.z+largo};
+  Vector3 v6 = {posicion.x+largo,posicion.y,posicion.z+largo};
+  Vector3 v7 = {posicion.x,posicion.y+largo,posicion.z+largo};
+  Vector3 v8 = {posicion.x+largo,posicion.y+largo,posicion.z+largo};
+
+  cubo->anadirVertice(v1);
+  cubo->anadirVertice(v2);
+  cubo->anadirVertice(v3);
+  cubo->anadirVertice(v4);
+  cubo->anadirVertice(v5);
+  cubo->anadirVertice(v6);
+  cubo->anadirVertice(v7);
+  cubo->anadirVertice(v8);
+
+  cubo->anadirTriangulo(v1,v2,v3);
+  cubo->anadirTriangulo(v4,v3,v2);
+
+
+  cubo->anadirTriangulo(v8,v3,v7);
+  cubo->anadirTriangulo(v4,v3,v8);
+
+  cubo->anadirTriangulo(v4,v8,v6);
+  cubo->anadirTriangulo(v6,v2,v4);
+
+  //cuidado con estos de abajo
+
+  cubo->anadirTriangulo(v6,v1,v2);
+  cubo->anadirTriangulo(v1,v6,v5);
+
+  cubo->anadirTriangulo(v3,v1,v5);
+  cubo->anadirTriangulo(v5,v7,v3);
+
+  return cubo;
 }
 
 

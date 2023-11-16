@@ -39,6 +39,9 @@ int main(){
   //mesh->crearRectangulo(3,2,v1);
   Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,1);
   
+  //crear cubo
+  Mazacota* cubo = mesh->crearCubo(5,v1);
+
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
 
   DisableCursor();                    // Limit cursor to relative movement inside the window
@@ -64,8 +67,9 @@ int main(){
           ClearBackground(RAYWHITE);
 
           BeginMode3D(camera);
-                rectangulo->PintarRectangulo(rectangulo);
-              mesh->dibujarMesh();
+              rectangulo->PintarRectangulo(rectangulo);
+              cubo->PintarRectangulo(cubo);
+              // mesh->dibujarMesh();
 
               DrawLine3D(v1,v2,ORANGE);
               DrawLine3D(v1,v3,GREEN);

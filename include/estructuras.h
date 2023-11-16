@@ -72,7 +72,7 @@ class Mazacota{ //necesario cambiar nombre de clase
     Triangulo* getTrianguloIni();
     Vertice* getVerticeIni();
 
-    void crearCubo(int largo, Vector3 posicion);
+    Mazacota* crearCubo(int largo, Vector3 posicion);
 };
 
 
