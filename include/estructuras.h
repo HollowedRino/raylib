@@ -1,5 +1,5 @@
 #pragma once
-#include <raylib.h>
+#include "raylib.h"
 #include <iostream>
 class Triangulo{
   private:
@@ -51,12 +51,12 @@ class Mazacota{ //necesario cambiar nombre de clase
     int contadorTri;
     int contadorVer;
     Mazacota();
-    Triangulo* getTriangulo(int id);
+    //Triangulo* getTriangulo(int id);
     Vector3 getVertice(int id); 
     //Ya no es puntero porque vertice como tiene un valoro, accedes directamente a vector3 
     int anadirVertice(Vector3 vertice);
     void anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
-    bool verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
+    //bool verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
     void dibujarMesh();
 
     //requisitos (por el momento los pondre aquí, pero si quieren mejorar el orden despues podemos
@@ -68,6 +68,7 @@ class Mazacota{ //necesario cambiar nombre de clase
     Triangulo* getTrianguloIni();
     Vertice* getVerticeIni();
 };
+
 
 
 

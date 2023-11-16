@@ -27,6 +27,16 @@ Vertice::Vertice(Vector3 pos){
 }
 
 //================Métodos de Mazacueta======================
+Vector3 Mazacota::getVertice(int id){
+  Vertice* temp = this->verticeIni;
+  while (temp != nullptr){
+    if (temp->id == id){
+      return temp->pos;
+    }
+    temp = temp->siguiente;
+  }
+}
+
 int Mazacota::anadirVertice(Vector3 vertice){
   Vertice* nuevoVertice = new Vertice(vertice);
   Vertice* puntero = this->verticeIni;
@@ -88,6 +98,20 @@ void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   }
 }
 
+void Mazacota::dibujarMesh(){
+  Triangulo* temp = this->trianguloIni;
+  while (temp != nullptr){
+    Vector3 vertice1 = getVertice(temp->vertice1);
+    Vector3 vertice2 = getVertice(temp->vertice2);
+    Vector3 vertice3 = getVertice(temp->vertice3);
+    DrawTriangle3D(vertice1, vertice2, vertice3, BLUE);
+    DrawLine3D(vertice1, vertice2, BLACK);
+    DrawLine3D(vertice1, vertice3, BLACK);
+    DrawLine3D(vertice2, vertice3, BLACK);
+    temp = temp->siguiente;
+  }
+}
+
 void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
 {
   Vector3 v1 = {posicion.x,posicion.y,posicion.z};
@@ -102,29 +126,9 @@ void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
   //Aqui solo sería llamar a la funcion de crear triangulos y ya estaría este requisito
 }
 
-Vector3 Mazacota::getVertice(int id){
-  Vertice* temp = this->verticeIni;
-  while (temp != nullptr){
-    if (temp->id == id){
-      return temp->pos;
-    }
-    temp = temp->siguiente;
-  }
-}
 
-void Mazacota::dibujarMesh(){
-  Triangulo* temp = this->trianguloIni;
-  while (temp != nullptr){
-    Vector3 vertice1 = getVertice(temp->vertice1);
-    Vector3 vertice2 = getVertice(temp->vertice2);
-    Vector3 vertice3 = getVertice(temp->vertice3);
-    DrawTriangle3D(vertice1, vertice2, vertice3, BLUE);
-    DrawLine3D(vertice1, vertice2, BLACK);
-    DrawLine3D(vertice1, vertice3, BLACK);
-    DrawLine3D(vertice2, vertice3, BLACK);
-    temp = temp->siguiente;
-  }
-}
+
+
 
 // ========== Lista de getters y setters ==========
 

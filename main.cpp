@@ -1,11 +1,12 @@
 #include "estructuras.h"
+#include <iostream>
 
 //------------------------------------------------------------------------------------
 // Program main entry point
 //------------------------------------------------------------------------------------
-Mazacota* mesh = new Mazacota();
 
 int main(){
+
     
   // Initialization
   //--------------------------------------------------------------------------------------
@@ -22,12 +23,17 @@ int main(){
   camera.fovy = 45.0f;                                // Camera field-of-view Y
   camera.projection = CAMERA_PERSPECTIVE;             // Camera projection type
 
-  Vector3 v1 = { 0.0f, 0.0f, 0.0f };
-  Vector3 v2 = { 0.0f, 0.0f, 9.0f };
+  Vector3 v1 = { 9.0f, 3.0f, 5.0f };
+  Vector3 v2 = { 7.0f, 2.0f, 9.0f };
   Vector3 v3 = { 9.0f, 0.0f, 0.0f };
   Vector3 v4 = { 0.0f, 9.0f, 0.0f };
 
-  mesh->anadirTriangulo(v1, v2, v3);
+  Mazacota* mesh = new Mazacota();
+
+  mesh->anadirTriangulo(v1,v2,v3);
+  Vector3 prueba = mesh->getVertice(1);
+  std::cout << prueba.x << ", " << prueba.y << ", " << prueba.z << std::endl;
+  
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
 
   DisableCursor();                    // Limit cursor to relative movement inside the window
@@ -54,14 +60,7 @@ int main(){
 
           BeginMode3D(camera);
 
-              DrawTriangle3D(v1,v3,v2,BLUE);
-
-              DrawLine3D(v1,v2,BLACK);  
-              DrawLine3D(v1,v3,BLACK);
-              DrawLine3D(v1,v4,BLACK);
-              DrawLine3D(v2,v3,BLACK);
-              DrawLine3D(v2,v4,BLACK);
-              DrawLine3D(v3,v4,BLACK);
+              mesh->dibujarMesh();
 
               DrawGrid(20, 1.0f);
 
