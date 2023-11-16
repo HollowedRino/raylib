@@ -260,9 +260,7 @@ void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
     vertice->pos.z = vertice->pos.z + diferenciaZ;
 
     vertice=vertice->siguiente;
-
   }
-  
 }
 
 // void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
