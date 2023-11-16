@@ -118,7 +118,7 @@ void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
   Vector3 v3 = {posicion.x,posicion.y+alto,posicion.z};
   Vector3 v4 = {posicion.x+ancho,posicion.y+alto,posicion.z};
   anadirTriangulo (v1, v2, v3);
-  anadirTriangulo (v1, v2, v3); // corregir el orden en el que estan puestos los vertices
+  anadirTriangulo (v4, v3, v2); // corregir el orden en el que estan puestos los vertices
 
   //Aqui solo sería llamar a la funcion de crear triangulos y ya estaría este requisito
 }
