@@ -124,7 +124,8 @@ void Mazacota::dibujarMesh(){
     Vector3 vertice1 = getVertice(temp->vertice1);
     Vector3 vertice2 = getVertice(temp->vertice2);
     Vector3 vertice3 = getVertice(temp->vertice3);
-    DrawTriangle3D(vertice1, vertice2, vertice3, BLUE);
+    DrawTriangle3D(vertice1, vertice2, vertice3, BLUE); //Esto es lo que dibuja
+
 
     //Pasar estas funciones a la funcion pintar triangulo
     DrawLine3D(vertice1, vertice2, BLACK);
@@ -171,7 +172,7 @@ void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
 }
 
 
-void Mazacota::crearCubo(int largo, Vector3 posicion) {
+void Mazacota::crearCubo (int largo, Vector3 posicion) {
   Vector3 v1 = {posicion.x,posicion.y,posicion.z};
   Vector3 v2 = {posicion.x+largo,posicion.y,posicion.z};
   Vector3 v3 = {posicion.x,posicion.y+largo,posicion.z};
