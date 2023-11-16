@@ -136,6 +136,21 @@ void Mazacota::dibujarMesh(){
   }
 }
 
+bool Mazacota::verificarMesh(Mazacota *mesh)
+{
+  Triangulo* triActual=this->trianguloIni;
+  Triangulo* triAnterior=nullptr;
+    if (/* condition */)
+    {
+      /* code */
+    }
+    else
+    {
+      return false;
+    }
+    
+}
+
 void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
 {
   Vector3 v1 = {posicion.x,posicion.y,posicion.z};
