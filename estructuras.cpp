@@ -139,38 +139,94 @@ void Mazacota::dibujarMesh(){
 
 bool Mazacota::verificarMesh(Mazacota *mesh)
 {
-  Triangulo* triActual=this->trianguloIni;
-  Triangulo* triComparador=this->trianguloIni;
+  Triangulo* triActual=mesh->trianguloIni;
+  Triangulo* triComparador=mesh->trianguloIni;
   bool valido = false;
   while (triActual != nullptr){
     while (triComparador != nullptr){ 
       if (triActual == triComparador){
         break;
-      }else if(triComparador->vertice1 == triActual->vertice1 || triComparador->vertice1 == triActual->vertice2 || triComparador->vertice1 == triActual->vertice3 ||
-               triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice3){
+      }else if((triComparador->vertice1 == triActual->vertice1 && (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3)) ||
+               (triComparador->vertice1 == triActual->vertice2 && (triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice1)) ||
+               (triComparador->vertice1 == triActual->vertice3 && (triComparador->vertice2 == triActual->vertice1 || triComparador->vertice3 == triActual->vertice2))){
         valido = true;
         break;
       }
       triComparador = triComparador->siguiente;
     } 
     triActual = triActual->siguiente;
-    triComparador=this->trianguloIni;
+    triComparador=mesh->trianguloIni;
   } 
   return valido; 
 }
 
-void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
+Mazacota* Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion, int plano)
 {
-  Vector3 v1 = {posicion.x,posicion.y,posicion.z};
-  Vector3 v2 = {posicion.x+ancho,posicion.y,posicion.z};
-  Vector3 v3 = {posicion.x,posicion.y+alto,posicion.z};
-  Vector3 v4 = {posicion.x+ancho,posicion.y+alto,posicion.z};
-  anadirTriangulo (v1, v2, v3);
-  anadirTriangulo (v4, v3, v2); // corregir el orden en el que estan puestos los vertices
-
-  //Aqui solo sería llamar a la funcion de crear triangulos y ya estaría este requisito
+  Mazacota* rectangulo = new Mazacota();
+  if (plano==1) //1 es xy
+  {
+    Vector3 v1 = {posicion.x,posicion.y,posicion.z};
+    Vector3 v2 = {posicion.x+ancho,posicion.y,posicion.z};
+    Vector3 v3 = {posicion.x,posicion.y+alto,posicion.z};
+    Vector3 v4 = {posicion.x+ancho,posicion.y+alto,posicion.z};
+    rectangulo->anadirVertice(v1);
+    rectangulo->anadirVertice(v2);
+    rectangulo->anadirVertice(v3);
+    rectangulo->anadirVertice(v4);
+    rectangulo->anadirTriangulo (v1, v2, v3);
+    rectangulo->anadirTriangulo (v4, v3, v2);
+    return  rectangulo;
+  }
+  else if (plano==2) // 2 es xz
+  {
+    Vector3 v1 = {posicion.x,posicion.y,posicion.z};
+    Vector3 v2 = {posicion.x+ancho,posicion.y,posicion.z};
+    Vector3 v3 = {posicion.x,posicion.y,posicion.z+alto};
+    Vector3 v4 = {posicion.x+ancho,posicion.y,posicion.z+alto};
+    rectangulo->anadirVertice(v1);
+    rectangulo->anadirVertice(v2);
+    rectangulo->anadirVertice(v3);
+    rectangulo->anadirVertice(v4);
+    rectangulo->anadirTriangulo (v1, v2, v3);
+    rectangulo->anadirTriangulo (v4, v3, v2);
+    return  rectangulo;
+  }
+  else if(plano==3) //3 es yz
+  {
+    Vector3 v1 = {posicion.x,posicion.y,posicion.z};
+    Vector3 v2 = {posicion.x,posicion.y+ancho,posicion.z};
+    Vector3 v3 = {posicion.x,posicion.y,posicion.z+alto};
+    Vector3 v4 = {posicion.x,posicion.y+ancho,posicion.z+alto};
+    rectangulo->anadirVertice(v1);
+    rectangulo->anadirVertice(v2);
+    rectangulo->anadirVertice(v3);
+    rectangulo->anadirVertice(v4);
+    rectangulo->anadirTriangulo (v1, v2, v3);
+    rectangulo->anadirTriangulo (v4, v3, v2);
+    return  rectangulo;
+  }
+     
 }
 
+void Mazacota::PintarRectangulo(Mazacota* mesh)
+{
+  Triangulo* temp = mesh->trianguloIni;
+  while (temp != nullptr){
+    Vector3 vertice1 = getVertice(temp->vertice1);
+    Vector3 vertice2 = getVertice(temp->vertice2);
+    Vector3 vertice3 = getVertice(temp->vertice3);
+    DrawTriangle3D(vertice1, vertice2, vertice3, BLUE);
+
+    //Pasar estas funciones a la funcion pintar triangulo
+    DrawLine3D(vertice1, vertice2, WHITE);
+    DrawLine3D(vertice1, vertice3, WHITE);
+    DrawLine3D(vertice2, vertice3, WHITE);
+    //Pasar estas funciones a la funcion pintar triangulo
+
+    temp = temp->siguiente;
+  }
+
+}
 
 void Mazacota::crearCubo (int largo, Vector3 posicion) {
   Vector3 v1 = {posicion.x,posicion.y,posicion.z};
