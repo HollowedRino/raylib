@@ -62,16 +62,41 @@ int Mazacota::anadirVertice(Vector3 vertice){
   }while(puntero != nullptr);
 }
 
-/*bool Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
-  if((triangulo->vertice2->pos.x < triangulo->vertice1->pos.x && triangulo->vertice3->pos.y < triangulo->vertice1->pos.y)||
-    (triangulo->vertice2->pos.x > triangulo->vertice1->pos.x && triangulo->vertice3->pos.y > triangulo->vertice1->pos.y)||
-    (triangulo->vertice2->pos.y < triangulo->vertice1->pos.x && triangulo->vertice3->pos.x > triangulo->vertice1->pos.y)||
-    (triangulo->vertice2->pos.y > triangulo->vertice1->pos.x && triangulo->vertice3->pos.x < triangulo->vertice1->pos.y)){
+bool Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
+  Vector3 temp = Vector3CrossProduct(v2,v3);
+  Vector3 res = Vector3CrossProduct(v1,temp);
+  if(res.z>=0){
+    return true;
+  }else{
+    return false;
+  }
+  
+  
+  //Vector3 P={(v2.y*v3.z-v2.z*v3.y),(v2.z*v3.x-v2.x*v3.z),(v2.x*v3.y-v2.y*v3.x)};
+  //Vector3 R ={(v1.y*P.y+v1.z*P.z),(v1.z*P.z-v1.x*P.y),(v1.x*-P.z+v1.y*P.y)};
+  //if(R.z>0){
+  //  return true;
+  //}else{
+  //  return false;
+  //}
+
+
+  /*float vec1x = v2.x - v1.x;
+  float vec1y = v2.y - v1.y;
+  float vec1z = v2.z - v1.z;
+
+  float vec2x = v3.x - v1.x;
+  float vec2y = v3.y - v1.y;
+  float vec2z = v3.z - v1.z;
+
+  // Calcular el producto cruz entre los vectores
+  float productoCruzZ = vec1x * vec2y - vec1y * vec2x;
+  if(productoCruzZ>0.0f){
       return true;
     }else{
       return false;
-    }
-}*/
+    }*/
+}
 
 void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   int indice1 = anadirVertice(v1);
@@ -109,6 +134,28 @@ void Mazacota::dibujarMesh(){
 
     temp = temp->siguiente;
   }
+}
+
+bool Mazacota::verificarMesh(Mazacota *mesh)
+{
+  Triangulo* triActual=this->trianguloIni;
+  Triangulo* triComparador=this->trianguloIni;
+  bool valido = false;
+  while (triActual != nullptr){
+    while (triComparador != nullptr){ 
+      if (triActual == triComparador){
+        break;
+      }else if(triComparador->vertice1 == triActual->vertice1 || triComparador->vertice1 == triActual->vertice2 || triComparador->vertice1 == triActual->vertice3 ||
+               triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice3){
+        valido = true;
+        break;
+      }
+      triComparador = triComparador->siguiente;
+    } 
+    triActual = triActual->siguiente;
+    triComparador=this->trianguloIni;
+  } 
+  return valido; 
 }
 
 void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
