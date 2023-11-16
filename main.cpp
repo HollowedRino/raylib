@@ -51,7 +51,7 @@ int main(){
   {
       // Update
       //----------------------------------------------------------------------------------
-      UpdateCamera(&camera, CAMERA_FREE);
+      UpdateCamera(&camera, CAMERA_FREE); //<------------------Esto hace que la camara sea de movimiento libre
 
       if (IsKeyDown('Z')) camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };
       //----------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ int main(){
           ClearBackground(RAYWHITE);
 
           BeginMode3D(camera);
-                rectangulo->PintarRectangulo(rectangulo);
+              rectangulo->PintarRectangulo(rectangulo);
               mesh->dibujarMesh();
 
               DrawLine3D(v1,v2,ORANGE);
