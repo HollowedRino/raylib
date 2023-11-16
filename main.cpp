@@ -35,7 +35,8 @@ int main(){
   mesh->anadirTriangulo(v2,v4,v3);
   std::cout<<mesh->verificarTriangulo(v1,v2,v3)<<std::endl;
   std::cout<<mesh->verificarTriangulo(v1,v3,v2)<<std::endl;
-  //mesh->crearRectangulo(3,2,v1);
+  mesh->crearRectangulo(3,2,v1,1);
+  Mazacota* rectangulo = mesh->crearRectangulo(5,5,v1,3);
 
   
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
@@ -63,7 +64,7 @@ int main(){
           ClearBackground(RAYWHITE);
 
           BeginMode3D(camera);
-
+                rectangulo->PintarRectangulo(rectangulo);
               mesh->dibujarMesh();
 
               DrawLine3D(v1,v2,ORANGE);
