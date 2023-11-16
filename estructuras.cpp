@@ -145,8 +145,7 @@ bool Mazacota::verificarMesh(Mazacota *mesh)
     while (triComparador != nullptr){ 
       if (triActual == triComparador){
         break;
-      }else if((triComparador->vertice1 == triActual->vertice1 && (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3)) ||
-               (triComparador->vertice1 == triActual->vertice2 && (triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice1)) ||
+      }else if((triComparador->vertice1 == triActual->vertice2 && (triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice1)) ||
                (triComparador->vertice1 == triActual->vertice3 && (triComparador->vertice2 == triActual->vertice1 || triComparador->vertice3 == triActual->vertice2))){
         valido = true;
         break;
