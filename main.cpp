@@ -69,12 +69,7 @@ int main(){
 
           BeginMode3D(camera);
               rectangulo->PintarRectangulo(rectangulo);
-<<<<<<< HEAD
-              cubo->PintarRectangulo(cubo);
-              // mesh->dibujarMesh();
-=======
               mesh->dibujarMesh();
->>>>>>> a833b4988704e55ff0a4ebca640ba8af0857b508
 
               DrawLine3D(v1,v2,ORANGE);
               DrawLine3D(v1,v3,GREEN);
