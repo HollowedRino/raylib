@@ -265,23 +265,23 @@ void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
   
 }
 
-void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
-{
-  Vertice* vertice = mesh->verticeIni;
-  float diferenciaX = destino.x - vertice->pos.x;
-  float diferenciaY = destino.y - vertice->pos.y;
-  float diferenciaZ = destino.z - vertice->pos.z;
-  while (vertice!=nullptr)
-  {
-    vertice->pos.x = vertice->pos.x + diferenciaX;
-    vertice->pos.y = vertice->pos.y + diferenciaY;
-    vertice->pos.z = vertice->pos.z + diferenciaZ;
+// void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
+// {
+//   Vertice* vertice = mesh->verticeIni;
+//   float diferenciaX = destino.x - vertice->pos.x;
+//   float diferenciaY = destino.y - vertice->pos.y;
+//   float diferenciaZ = destino.z - vertice->pos.z;
+//   while (vertice!=nullptr)
+//   {
+//     vertice->pos.x = vertice->pos.x + diferenciaX;
+//     vertice->pos.y = vertice->pos.y + diferenciaY;
+//     vertice->pos.z = vertice->pos.z + diferenciaZ;
 
-    vertice=vertice->siguiente;
+//     vertice=vertice->siguiente;
 
-  }
+//   }
   
-}
+// }
 
 Mazacota* Mazacota::crearCubo (int largo, Vector3 posicion) {
   Mazacota* cubo = new Mazacota();
