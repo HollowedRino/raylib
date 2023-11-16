@@ -32,14 +32,13 @@ int main(){
 
   Mazacota* mesh = new Mazacota();
   mesh->anadirTriangulo(v1,v2,v3);
-  mesh->anadirTriangulo(v1,v4,v2);
-  mesh->anadirTriangulo(v2,v4,v3);
+  mesh->anadirTriangulo(v2,v3,v4);
   std::cout<<mesh->verificarTriangulo(v1,v2,v3)<<std::endl;
   std::cout<<mesh->verificarTriangulo(v1,v3,v2)<<std::endl;
   std::cout << mesh->verificarMesh(mesh) << std::endl;
   //mesh->crearRectangulo(3,2,v1);
-  Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,1);
-  rectangulo->MoverMesh(rectangulo,pruebaMover);
+  Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,3);
+  //rectangulo->MoverMesh(rectangulo,pruebaMover);
   
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
 
