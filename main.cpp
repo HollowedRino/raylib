@@ -28,16 +28,17 @@ int main(){
   Vector3 v3 = { 9.0f, 0.0f, 0.0f };
   Vector3 v4 = { 0.0f, 9.0f, 0.0f };
   Vector3 v5 = { -9.0f, 9.0f, 0.0f };
+  Vector3 pruebaMover= {1.0f,1.0f,1.0f};
 
   Mazacota* mesh = new Mazacota();
   mesh->anadirTriangulo(v1,v2,v3);
-  mesh->anadirTriangulo(v1,v2,v4);
-  mesh->anadirTriangulo(v2,v4,v3);
+  mesh->anadirTriangulo(v2,v3,v4);
   std::cout<<mesh->verificarTriangulo(v1,v2,v3)<<std::endl;
   std::cout<<mesh->verificarTriangulo(v1,v3,v2)<<std::endl;
   std::cout << mesh->verificarMesh(mesh) << std::endl;
   //mesh->crearRectangulo(3,2,v1);
-  Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,1);
+  Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,3);
+  //rectangulo->MoverMesh(rectangulo,pruebaMover);
   
   //crear cubo
   Mazacota* cubo = mesh->crearCubo(5,v1);
@@ -54,7 +55,7 @@ int main(){
   {
       // Update
       //----------------------------------------------------------------------------------
-      UpdateCamera(&camera, CAMERA_FREE);
+      UpdateCamera(&camera, CAMERA_FREE); //<------------------Esto hace que la camara sea de movimiento libre
 
       if (IsKeyDown('Z')) camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };
       //----------------------------------------------------------------------------------
@@ -68,8 +69,12 @@ int main(){
 
           BeginMode3D(camera);
               rectangulo->PintarRectangulo(rectangulo);
+<<<<<<< HEAD
               cubo->PintarRectangulo(cubo);
               // mesh->dibujarMesh();
+=======
+              mesh->dibujarMesh();
+>>>>>>> a833b4988704e55ff0a4ebca640ba8af0857b508
 
               DrawLine3D(v1,v2,ORANGE);
               DrawLine3D(v1,v3,GREEN);

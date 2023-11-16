@@ -146,8 +146,10 @@ bool Mazacota::verificarMesh(Mazacota *mesh)
     while (triComparador != nullptr){ 
       if (triActual == triComparador){
         break;
-      }else if((triComparador->vertice1 == triActual->vertice1 && (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3)) ||
+      }else if((triComparador->vertice1 == triActual->vertice1 && (triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2)) ||
+               (triComparador->vertice1 == triActual->vertice2 && (triComparador->vertice2 == triActual->vertice1 || triComparador->vertice3 == triActual->vertice3)) ||
                (triComparador->vertice1 == triActual->vertice2 && (triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice1)) ||
+               (triComparador->vertice1 == triActual->vertice3 && (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice1)) ||
                (triComparador->vertice1 == triActual->vertice3 && (triComparador->vertice2 == triActual->vertice1 || triComparador->vertice3 == triActual->vertice2))){
         valido = true;
         break;
@@ -169,10 +171,6 @@ Mazacota* Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion, int p
     Vector3 v2 = {posicion.x+ancho,posicion.y,posicion.z};
     Vector3 v3 = {posicion.x,posicion.y+alto,posicion.z};
     Vector3 v4 = {posicion.x+ancho,posicion.y+alto,posicion.z};
-    rectangulo->anadirVertice(v1);
-    rectangulo->anadirVertice(v2);
-    rectangulo->anadirVertice(v3);
-    rectangulo->anadirVertice(v4);
     rectangulo->anadirTriangulo (v1, v2, v3);
     rectangulo->anadirTriangulo (v4, v3, v2);
     return  rectangulo;
@@ -183,10 +181,6 @@ Mazacota* Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion, int p
     Vector3 v2 = {posicion.x+ancho,posicion.y,posicion.z};
     Vector3 v3 = {posicion.x,posicion.y,posicion.z+alto};
     Vector3 v4 = {posicion.x+ancho,posicion.y,posicion.z+alto};
-    rectangulo->anadirVertice(v1);
-    rectangulo->anadirVertice(v2);
-    rectangulo->anadirVertice(v3);
-    rectangulo->anadirVertice(v4);
     rectangulo->anadirTriangulo (v1, v2, v3);
     rectangulo->anadirTriangulo (v4, v3, v2);
     return  rectangulo;
@@ -197,10 +191,6 @@ Mazacota* Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion, int p
     Vector3 v2 = {posicion.x,posicion.y+ancho,posicion.z};
     Vector3 v3 = {posicion.x,posicion.y,posicion.z+alto};
     Vector3 v4 = {posicion.x,posicion.y+ancho,posicion.z+alto};
-    rectangulo->anadirVertice(v1);
-    rectangulo->anadirVertice(v2);
-    rectangulo->anadirVertice(v3);
-    rectangulo->anadirVertice(v4);
     rectangulo->anadirTriangulo (v1, v2, v3);
     rectangulo->anadirTriangulo (v4, v3, v2);
     return  rectangulo;
@@ -226,6 +216,42 @@ void Mazacota::PintarRectangulo(Mazacota* mesh)
     temp = temp->siguiente;
   }
 
+}
+
+void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
+{
+  Vertice* vertice = mesh->verticeIni;
+  float diferenciaX = destino.x - vertice->pos.x;
+  float diferenciaY = destino.y - vertice->pos.y;
+  float diferenciaZ = destino.z - vertice->pos.z;
+  while (vertice!=nullptr)
+  {
+    vertice->pos.x = vertice->pos.x + diferenciaX;
+    vertice->pos.y = vertice->pos.y + diferenciaY;
+    vertice->pos.z = vertice->pos.z + diferenciaZ;
+
+    vertice=vertice->siguiente;
+
+  }
+  
+}
+
+void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
+{
+  Vertice* vertice = mesh->verticeIni;
+  float diferenciaX = destino.x - vertice->pos.x;
+  float diferenciaY = destino.y - vertice->pos.y;
+  float diferenciaZ = destino.z - vertice->pos.z;
+  while (vertice!=nullptr)
+  {
+    vertice->pos.x = vertice->pos.x + diferenciaX;
+    vertice->pos.y = vertice->pos.y + diferenciaY;
+    vertice->pos.z = vertice->pos.z + diferenciaZ;
+
+    vertice=vertice->siguiente;
+
+  }
+  
 }
 
 Mazacota* Mazacota::crearCubo (int largo, Vector3 posicion) {
