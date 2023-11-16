@@ -168,10 +168,6 @@ Mazacota* Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion, int p
     Vector3 v2 = {posicion.x+ancho,posicion.y,posicion.z};
     Vector3 v3 = {posicion.x,posicion.y+alto,posicion.z};
     Vector3 v4 = {posicion.x+ancho,posicion.y+alto,posicion.z};
-    rectangulo->anadirVertice(v1);
-    rectangulo->anadirVertice(v2);
-    rectangulo->anadirVertice(v3);
-    rectangulo->anadirVertice(v4);
     rectangulo->anadirTriangulo (v1, v2, v3);
     rectangulo->anadirTriangulo (v4, v3, v2);
     return  rectangulo;
@@ -182,10 +178,6 @@ Mazacota* Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion, int p
     Vector3 v2 = {posicion.x+ancho,posicion.y,posicion.z};
     Vector3 v3 = {posicion.x,posicion.y,posicion.z+alto};
     Vector3 v4 = {posicion.x+ancho,posicion.y,posicion.z+alto};
-    rectangulo->anadirVertice(v1);
-    rectangulo->anadirVertice(v2);
-    rectangulo->anadirVertice(v3);
-    rectangulo->anadirVertice(v4);
     rectangulo->anadirTriangulo (v1, v2, v3);
     rectangulo->anadirTriangulo (v4, v3, v2);
     return  rectangulo;
@@ -196,10 +188,6 @@ Mazacota* Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion, int p
     Vector3 v2 = {posicion.x,posicion.y+ancho,posicion.z};
     Vector3 v3 = {posicion.x,posicion.y,posicion.z+alto};
     Vector3 v4 = {posicion.x,posicion.y+ancho,posicion.z+alto};
-    rectangulo->anadirVertice(v1);
-    rectangulo->anadirVertice(v2);
-    rectangulo->anadirVertice(v3);
-    rectangulo->anadirVertice(v4);
     rectangulo->anadirTriangulo (v1, v2, v3);
     rectangulo->anadirTriangulo (v4, v3, v2);
     return  rectangulo;
