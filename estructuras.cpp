@@ -139,16 +139,23 @@ void Mazacota::dibujarMesh(){
 bool Mazacota::verificarMesh(Mazacota *mesh)
 {
   Triangulo* triActual=this->trianguloIni;
-  Triangulo* triAnterior=nullptr;
-    if (/* condition */)
-    {
-      /* code */
-    }
-    else
-    {
-      return false;
-    }
-    
+  Triangulo* triComparador=this->trianguloIni;
+  bool valido = false;
+  while (triActual != nullptr){
+    while (triComparador != nullptr){ 
+      if (triActual == triComparador){
+        break;
+      }else if(triComparador->vertice1 == triActual->vertice1 || triComparador->vertice1 == triActual->vertice2 || triComparador->vertice1 == triActual->vertice3 ||
+               triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice3){
+        valido = true;
+        break;
+      }
+      triComparador = triComparador->siguiente;
+    } 
+    triActual = triActual->siguiente;
+    triComparador=this->trianguloIni;
+  } 
+  return valido; 
 }
 
 void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
