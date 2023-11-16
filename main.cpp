@@ -31,7 +31,7 @@ int main(){
   Mazacota* mesh = new Mazacota();
 
   mesh->anadirTriangulo(v1,v2,v3);
-  Vector3 prueba = mesh->getVertice(1);
+  Vector3 prueba = mesh->getVertice(0);
   std::cout << prueba.x << ", " << prueba.y << ", " << prueba.z << std::endl;
   
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;

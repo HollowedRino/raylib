@@ -48,16 +48,16 @@ int Mazacota::anadirVertice(Vector3 vertice){
       return nuevoVertice->id;
       break;
     }else{
-      if (puntero->pos.x == nuevoVertice->pos.x && puntero->pos.y == nuevoVertice->pos.y && puntero->pos.z == nuevoVertice->pos.z){
-        delete nuevoVertice;
-        return puntero->id;
-        break;
-      }else if(puntero == nullptr){
+      if(puntero == nullptr){
         nuevoVertice->id = contadorVer;
         verticeFinal->siguiente = nuevoVertice;
         verticeFinal=nuevoVertice;
         contadorVer++;
         return nuevoVertice->id;
+        break;
+      }else if (puntero->pos.x == nuevoVertice->pos.x && puntero->pos.y == nuevoVertice->pos.y && puntero->pos.z == nuevoVertice->pos.z){
+        delete nuevoVertice;
+        return puntero->id;
         break;
       }
     }
@@ -105,9 +105,13 @@ void Mazacota::dibujarMesh(){
     Vector3 vertice2 = getVertice(temp->vertice2);
     Vector3 vertice3 = getVertice(temp->vertice3);
     DrawTriangle3D(vertice1, vertice2, vertice3, BLUE);
+
+    //Pasar estas funciones a la funcion pintar triangulo
     DrawLine3D(vertice1, vertice2, BLACK);
     DrawLine3D(vertice1, vertice3, BLACK);
     DrawLine3D(vertice2, vertice3, BLACK);
+    //Pasar estas funciones a la funcion pintar triangulo
+
     temp = temp->siguiente;
   }
 }
@@ -118,10 +122,8 @@ void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
   Vector3 v2 = {posicion.x+ancho,posicion.y,posicion.z};
   Vector3 v3 = {posicion.x,posicion.y+alto,posicion.z};
   Vector3 v4 = {posicion.x+ancho,posicion.y+alto,posicion.z};
-  anadirVertice(v1);
-  anadirVertice(v2);
-  anadirVertice(v3);
-  anadirVertice(v4);
+  anadirTriangulo (v1, v2, v3);
+  anadirTriangulo (v1, v2, v3); // corregir el orden en el que estan puestos los vertices
 
   //Aqui solo sería llamar a la funcion de crear triangulos y ya estaría este requisito
 }
