@@ -124,6 +124,13 @@ void Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion)
 }
 
 
+void Mazacota::crearCubo(int largo, Vector3 posicion) {
+  Vector3 v1 = {posicion.x,posicion.y,posicion.z};
+  Vector3 v2 = {posicion.x+largo,posicion.y,posicion.z};
+  Vector3 v3 = {posicion.x,posicion.y+largo,posicion.z};
+  Vector3 v4 = {posicion.x+largo,posicion.y+largo,posicion.z};
+}
+
 
 
 
