@@ -23,16 +23,21 @@ int main(){
   camera.fovy = 45.0f;                                // Camera field-of-view Y
   camera.projection = CAMERA_PERSPECTIVE;             // Camera projection type
 
-  Vector3 v1 = { 9.0f, 3.0f, 5.0f };
-  Vector3 v2 = { 7.0f, 2.0f, 9.0f };
+  Vector3 v1 = { 0.0f, 0.0f, 0.0f };
+  Vector3 v2 = { 0.0f, 0.0f, 9.0f };
   Vector3 v3 = { 9.0f, 0.0f, 0.0f };
   Vector3 v4 = { 0.0f, 9.0f, 0.0f };
+  Vector3 v5 = { -9.0f, 9.0f, 0.0f };
 
   Mazacota* mesh = new Mazacota();
 
   mesh->anadirTriangulo(v1,v2,v3);
-  Vector3 prueba = mesh->getVertice(2);
-  std::cout << prueba.x << ", " << prueba.y << ", " << prueba.z << std::endl;
+  mesh->anadirTriangulo(v1,v2,v4);
+  mesh->anadirTriangulo(v2,v3,v4);
+  mesh->anadirTriangulo(v1,v3,v4);
+  mesh->anadirTriangulo(v1,v4,v5);
+  mesh->anadirTriangulo(v2,v3,v5);
+
   
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
 
