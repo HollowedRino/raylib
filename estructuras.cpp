@@ -46,24 +46,19 @@ int Mazacota::anadirVertice(Vector3 vertice){
       verticeFinal=nuevoVertice;
       contadorVer++;
       return nuevoVertice->id;
-      break;
     }else{
-      if(puntero == nullptr){
+      if (puntero->pos.x == nuevoVertice->pos.x && puntero->pos.y == nuevoVertice->pos.y && puntero->pos.z == nuevoVertice->pos.z){
+        delete nuevoVertice;
+        return puntero->id;
+      }else if(puntero->siguiente == nullptr){
         nuevoVertice->id = contadorVer;
         verticeFinal->siguiente = nuevoVertice;
         verticeFinal=nuevoVertice;
         contadorVer++;
         return nuevoVertice->id;
-        break;
-      }else if (puntero->pos.x == nuevoVertice->pos.x && puntero->pos.y == nuevoVertice->pos.y && puntero->pos.z == nuevoVertice->pos.z){
-        delete nuevoVertice;
-        return puntero->id;
-        break;
       }
     }
-    if(puntero != nullptr){
-      puntero = puntero->siguiente;
-    }
+    puntero = puntero->siguiente;
   }while(puntero != nullptr);
 }
 
