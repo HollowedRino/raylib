@@ -37,7 +37,7 @@ int main(){
   std::cout<<mesh->verificarTriangulo(v1,v3,v2)<<std::endl;
   std::cout << mesh->verificarMesh(mesh) << std::endl;
   //mesh->crearRectangulo(3,2,v1);
-
+  Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,1);
   
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
 
