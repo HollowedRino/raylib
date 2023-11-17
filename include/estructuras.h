@@ -60,6 +60,7 @@ class Mazacota{ //necesario cambiar nombre de clase
     int verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
     void dibujarMesh();
 
+    bool compartenAristas(Triangulo* t1, Triangulo* t2);
     
     bool verificarMesh(Mazacota* mesh);
     void PintarTriangulo(Mazacota* triangulo);

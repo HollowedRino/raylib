@@ -77,6 +77,8 @@ int Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
     return 5;
   }else if(res.x<0){
     return 4;
+  }else{
+    return 2;
   }
 }
 
@@ -119,7 +121,58 @@ void Mazacota::dibujarMesh(){
   }
 }
 
-bool Mazacota::verificarMesh(Mazacota *mesh)
+bool Mazacota::compartenAristas(Triangulo* t1, Triangulo* t2){
+  int vCompartidos = 0;
+  if (t1->vertice1 == t2->vertice1 || t1->vertice1 == t2->vertice2 || t1->vertice1 == t2->vertice3){
+    vCompartidos++;
+  }
+  if (t1->vertice2 == t2->vertice1 || t1->vertice2 == t2->vertice2 || t1->vertice2 == t2->vertice3){
+    vCompartidos++;
+  }
+  if (t1->vertice3 == t2->vertice1 || t1->vertice3 == t2->vertice2 || t1->vertice3 == t2->vertice3){
+    vCompartidos++;
+  }
+
+  if (vCompartidos == 2){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+bool Mazacota::verificarMesh(Mazacota *mesh){
+  Triangulo* triActual = mesh->trianguloIni;
+  Triangulo* triComparador = mesh->trianguloIni;
+  bool valido = false;
+
+  while (triActual != nullptr){
+    Vector3 vertice1 = getVertice(triActual->vertice1);
+    Vector3 vertice2 = getVertice(triActual->vertice2);
+    Vector3 vertice3 = getVertice(triActual->vertice3);
+    int antihorario = mesh->verificarTriangulo(vertice1, vertice2, vertice3);
+    
+    if(antihorario%2!=0){
+      valido = false;
+      while (triComparador != nullptr){
+        valido = compartenAristas(triActual, triComparador);
+        if (valido == true){
+          break;
+        }
+        triComparador = triComparador->siguiente;
+      }
+      triActual = triActual->siguiente;
+      triComparador = mesh->trianguloIni;
+      if (valido == false){
+        break;
+      }
+    }else{
+      break;
+    }
+  }
+  return valido;
+}
+
+/*bool Mazacota::verificarMesh(Mazacota *mesh)
 {
   Triangulo* triActual=mesh->trianguloIni;
   Triangulo* triComparador=mesh->trianguloIni;
@@ -184,7 +237,7 @@ bool Mazacota::verificarMesh(Mazacota *mesh)
     triComparador=mesh->trianguloIni;
   }
   return validoPrincipal; 
-}
+}*/
 
 void Mazacota::PintarTriangulo(Mazacota *triangulo)
 {

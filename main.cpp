@@ -23,11 +23,11 @@ int main(){
   camera.fovy = 45.0f;                                // Camera field-of-view Y
   camera.projection = CAMERA_PERSPECTIVE;             // Camera projection type
 
-  Vector3 v1 = { 1.0f, 2.0f, 3.0f };
-  Vector3 v2 = { 4.0f, 5.0f, 9.0f };
-  Vector3 v3 = { 9.0f, 6.0f, 7.0f };
-  Vector3 v4 = { 0.0f, 9.0f, 0.0f };
-  Vector3 v5 = { -9.0f, 9.0f, 0.0f };
+  Vector3 v1 = { 1.0f, 1.0f, 1.0f };
+  Vector3 v2 = { 1.0f, 1.0f, 9.0f };
+  Vector3 v3 = { 9.0f, 1.0f, 1.0f };
+  Vector3 v4 = { 1.0f, 9.0f, 1.0f };
+  Vector3 v5 = { -9.0f, 9.0f, 1.0f };
   Vector3 v6 = { 7.0f, 0.0f, -3.0f};
   Vector3 pruebaMover= {1.0f,1.0f,1.0f};
   Vector3 prueba = { 0.0f, 0.0f, 0.0f };
@@ -36,14 +36,14 @@ int main(){
   mesh->anadirTriangulo(v1,v2,v3);
   mesh->anadirTriangulo(v2,v3,v4); 
   mesh->anadirTriangulo(v2,v4,v1);
-  mesh->anadirTriangulo(v5,v6,v1);
+  //mesh->anadirTriangulo(v5,v6,v1);
   std::cout<<mesh->verificarTriangulo(v1,v2,v3)<<std::endl;
   std::cout<<mesh->verificarTriangulo(v1,v3,v2)<<std::endl;
   std::cout << mesh->verificarMesh(mesh) << std::endl;
   //mesh->crearRectangulo(3,2,v1);
   Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,3);
   //rectangulo->MoverMesh(rectangulo,pruebaMover);
-  
+  std::cout << rectangulo->compartenAristas(rectangulo->trianguloIni,rectangulo->trianguloIni->siguiente)<<std::endl;
   //crear cubo
   Mazacota* cubo = mesh->crearCubo(5,v1);
 
