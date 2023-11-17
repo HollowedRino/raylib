@@ -52,7 +52,7 @@ class Mazacota{ //necesario cambiar nombre de clase
     int contadorTri;
     int contadorVer;
     Mazacota();
-    bool verificarMesh(Mazacota* mesh);
+    
     Vector3 getVertice(int id); 
     
     int anadirVertice(Vector3 vertice);
