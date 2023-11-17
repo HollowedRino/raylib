@@ -153,42 +153,42 @@ bool Mazacota::verificarMesh(Mazacota *mesh)
           break;
         } 
       }else if(triComparador->vertice1 == triActual->vertice2){
-        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+        if (triComparador->vertice2 == triActual->vertice1 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice1 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
           break;
         } 
       }else if(triComparador->vertice1 == triActual->vertice3){
-        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+        if (triComparador->vertice2 == triActual->vertice1 || triComparador->vertice2 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice1 || triComparador->vertice3 == triActual->vertice2){
           valido = true;
           break;
         } 
       }else if(triComparador->vertice2 == triActual->vertice1){
-        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+        if (triComparador->vertice1 == triActual->vertice2 || triComparador->vertice1 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
           break;
         } 
       }else if(triComparador->vertice2 == triActual->vertice2){
-        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+        if (triComparador->vertice1 == triActual->vertice1 || triComparador->vertice1 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice1 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
           break;
         } 
       }else if(triComparador->vertice2 == triActual->vertice3){
-        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+        if (triComparador->vertice1 == triActual->vertice1 || triComparador->vertice1 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice1 || triComparador->vertice3 == triActual->vertice2){
           valido = true;
           break;
         } 
       }else if(triComparador->vertice3 == triActual->vertice1){
-        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+        if (triComparador->vertice1 == triActual->vertice2 || triComparador->vertice1 == triActual->vertice3 || triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3){
           valido = true;
           break;
         } 
       }else if(triComparador->vertice3 == triActual->vertice2){
-        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+        if (triComparador->vertice2 == triActual->vertice1 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice1 == triActual->vertice1 || triComparador->vertice1 == triActual->vertice3){
           valido = true;
           break;
         } 
       }else if(triComparador->vertice3 == triActual->vertice3){
-        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice1 || triComparador->vertice1 == triActual->vertice1 || triComparador->vertice1 == triActual->vertice2){
           valido = true;
           break;
         } 
