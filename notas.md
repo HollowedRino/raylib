@@ -12,16 +12,16 @@
 
 <!-- 5. constructores //walter -->
 
-6. Averiguar camara estática
+<!-- 6. Averiguar camara estática -->
 
 ## Requerimentos
 
 1. Implementar una función llamada VerificarMesh que reciba un Mesh y devuelva un booleano
 que indique si es un Mesh válido o no. (loop de verificarTriangulo()) //Sebas + Aless
 
-<!-- 
+
 2. Implementar una función llamada PintarTriangulo que reciba un Mesh y pinta los bordes del
-rectángulo. (con drawline, mandas un punter oa un mesh especifico y pinte las lineas de ese mesh que es solo un triangulo) //Jaime -->
+rectángulo. (con drawline, mandas un punter oa un mesh especifico y pinte las lineas de ese mesh que es solo un triangulo) //Jaime
 
 <!-- 3. Implementar una función llamada CrearRectangulo que, recibiendo su ancho, su alto y la
 posición devuelva una estructura Mesh (tal como se especifica en el marco teórico). //Aless--> 
