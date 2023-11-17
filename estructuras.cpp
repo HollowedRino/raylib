@@ -141,54 +141,66 @@ bool Mazacota::verificarMesh(Mazacota *mesh)
 {
   Triangulo* triActual=mesh->trianguloIni;
   Triangulo* triComparador=mesh->trianguloIni;
-  bool valido = false;
+  bool validoPrincipal = false;
   while (triActual != nullptr){
+    bool valido = false;
     while (triComparador != nullptr){ 
       if (triActual == triComparador){
         break;
       }else if(triComparador->vertice1 == triActual->vertice1){
         if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
+          break;
         } 
       }else if(triComparador->vertice1 == triActual->vertice2){
         if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
+          break;
         } 
       }else if(triComparador->vertice1 == triActual->vertice3){
         if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
+          break;
         } 
       }else if(triComparador->vertice2 == triActual->vertice1){
         if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
+          break;
         } 
       }else if(triComparador->vertice2 == triActual->vertice2){
         if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
+          break;
         } 
       }else if(triComparador->vertice2 == triActual->vertice3){
         if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
+          break;
         } 
       }else if(triComparador->vertice3 == triActual->vertice1){
         if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
+          break;
         } 
       }else if(triComparador->vertice3 == triActual->vertice2){
         if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
+          break;
         } 
       }else if(triComparador->vertice3 == triActual->vertice3){
         if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
           valido = true;
+          break;
         } 
+      }else{
+        valido = false;
       }
       triComparador = triComparador->siguiente;
     } 
     triActual = triActual->siguiente;
     triComparador=mesh->trianguloIni;
-  } 
-  return valido; 
+  }
+  return validoPrincipal; 
 }
 
 Mazacota* Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion, int plano)
