@@ -29,6 +29,7 @@ int main(){
   Vector3 v4 = { 0.0f, 9.0f, 0.0f };
   Vector3 v5 = { -9.0f, 9.0f, 0.0f };
   Vector3 pruebaMover= {1.0f,1.0f,1.0f};
+  Vector3 prueba = { 0.0f, 0.0f, 0.0f };
 
   Mazacota* mesh = new Mazacota();
   mesh->anadirTriangulo(v1,v2,v3);
@@ -39,12 +40,12 @@ int main(){
   std::cout << mesh->verificarMesh(mesh) << std::endl;
   //mesh->crearRectangulo(3,2,v1);
   Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,1);
-  rectangulo->MoverMesh(rectangulo,pruebaMover);
+  //rectangulo->MoverMesh(rectangulo,pruebaMover);
   
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
 
   DisableCursor();                    // Limit cursor to relative movement inside the window
-
+  bool pause = 0;
   SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
   //--------------------------------------------------------------------------------------
 
@@ -53,9 +54,17 @@ int main(){
   {
       // Update
       //----------------------------------------------------------------------------------
-      UpdateCamera(&camera, CAMERA_FREE); //<------------------Esto hace que la camara sea de movimiento libre
+      UpdateCamera(&camera,CAMERA_FREE);
 
       if (IsKeyDown('Z')) camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };
+       
+      if (IsKeyPressed(KEY_Q)) pause = !pause;
+
+      if(!pause)
+      {
+          rectangulo->MoverMesh(rectangulo,prueba);
+          prueba.x+=0.05f;
+      }
       //----------------------------------------------------------------------------------
 
       // Draw
@@ -66,12 +75,12 @@ int main(){
           ClearBackground(RAYWHITE);
 
           BeginMode3D(camera);
-              rectangulo->PintarRectangulo(rectangulo);
-              mesh->dibujarMesh();
+                rectangulo->PintarRectangulo(rectangulo);
+              //mesh->dibujarMesh();
 
-              DrawLine3D(v1,v2,ORANGE);
-              DrawLine3D(v1,v3,GREEN);
-              DrawLine3D(v1,v4,RED);
+              //DrawLine3D(v1,v2,ORANGE);
+              //DrawLine3D(v1,v3,GREEN);
+              //DrawLine3D(v1,v4,RED);
 
               DrawGrid(20, 1.0f);
 

@@ -233,6 +233,17 @@ void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
   
 }
 
+/*void Mazacota::Animar(Mazacota* mesh,)
+{
+  if (IsKeyPressed(KEY_SPACE)) pause = !pause;
+
+    if(!pause)
+    {
+        mesh->MoverMesh(mesh,prueba);
+        prueba.x+=0.05f;
+    }
+}*/
+
 void Mazacota::crearCubo(int largo, Vector3 posicion) {
   Vector3 v1 = {posicion.x,posicion.y,posicion.z};
   Vector3 v2 = {posicion.x+largo,posicion.y,posicion.z};
