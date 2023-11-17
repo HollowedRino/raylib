@@ -52,34 +52,25 @@ class Mazacota{ //necesario cambiar nombre de clase
     int contadorTri;
     int contadorVer;
     Mazacota();
-    //Triangulo* getTriangulo(int id);
+    bool verificarMesh(Mazacota* mesh);
     Vector3 getVertice(int id); 
-    //Ya no es puntero porque vertice como tiene un valoro, accedes directamente a vector3 
+    
     int anadirVertice(Vector3 vertice);
     void anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
     int verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3);
     void dibujarMesh();
 
-    //requisitos (por el momento los pondre aquí, pero si quieren mejorar el orden despues podemos
-    // moverlos a otros .h)
-    bool verificarMesh(Mazacota* mesh);
+    Mazacota* crearCubo(int largo, Vector3 posicion);
+    
     Mazacota* crearRectangulo(int ancho, int alto, Vector3 posicion, int plano);
 
     void PintarRectangulo(Mazacota* mesh);
     void MoverMesh(Mazacota* mesh, Vector3 destino);
-    //void Animar(Mazacota* mesh);  
     //getters and setters
     void setTrianguloIni(Triangulo* t);
     void setVerticeIni(Vertice* v);
     Triangulo* getTrianguloIni();
     Vertice* getVerticeIni();
 
-    Mazacota* crearCubo(int largo, Vector3 posicion);
+    
 };
-
-
-
-
-//requerimiento 1
-//Implementar una función llamada VerificarMazacota que reciba un Mazacota y devuelva un booleano
-//que indique si es un Mazacota válido o no.

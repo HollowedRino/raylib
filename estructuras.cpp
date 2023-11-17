@@ -69,35 +69,15 @@ int Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
     return 1;
   }else if(res.z<0){
     return 0;
-  }else{
+  }else if(res.y>0){
+    return 3;
+  }else if(res.y<0){
     return 2;
+  }else if(res.x>0){
+    return 5;
+  }else if(res.x<0){
+    return 4;
   }
-  
-  
-  //Vector3 P={(v2.y*v3.z-v2.z*v3.y),(v2.z*v3.x-v2.x*v3.z),(v2.x*v3.y-v2.y*v3.x)};
-  //Vector3 R ={(v1.y*P.y+v1.z*P.z),(v1.z*P.z-v1.x*P.y),(v1.x*-P.z+v1.y*P.y)};
-  //if(R.z>0){
-  //  return true;
-  //}else{
-  //  return false;
-  //}
-
-
-  /*float vec1x = v2.x - v1.x;
-  float vec1y = v2.y - v1.y;
-  float vec1z = v2.z - v1.z;
-
-  float vec2x = v3.x - v1.x;
-  float vec2y = v3.y - v1.y;
-  float vec2z = v3.z - v1.z;
-
-  // Calcular el producto cruz entre los vectores
-  float productoCruzZ = vec1x * vec2y - vec1y * vec2x;
-  if(productoCruzZ>0.0f){
-      return true;
-    }else{
-      return false;
-    }*/
 }
 
 void Mazacota::anadirTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
@@ -289,24 +269,6 @@ void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
     }
 }*/
 
-// void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
-// {
-//   Vertice* vertice = mesh->verticeIni;
-//   float diferenciaX = destino.x - vertice->pos.x;
-//   float diferenciaY = destino.y - vertice->pos.y;
-//   float diferenciaZ = destino.z - vertice->pos.z;
-//   while (vertice!=nullptr)
-//   {
-//     vertice->pos.x = vertice->pos.x + diferenciaX;
-//     vertice->pos.y = vertice->pos.y + diferenciaY;
-//     vertice->pos.z = vertice->pos.z + diferenciaZ;
-
-//     vertice=vertice->siguiente;
-
-//   }
-  
-// }
-
 Mazacota* Mazacota::crearCubo (int largo, Vector3 posicion) {
   Mazacota* cubo = new Mazacota();
 
@@ -361,8 +323,6 @@ Mazacota* Mazacota::crearCubo (int largo, Vector3 posicion) {
 
   return cubo;
 }
-
-
 
 
 // ========== Lista de getters y setters ==========
