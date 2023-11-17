@@ -276,6 +276,17 @@ void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
   }
 }
 
+/*void Mazacota::Animar(Mazacota* mesh,)
+{
+  if (IsKeyPressed(KEY_SPACE)) pause = !pause;
+
+    if(!pause)
+    {
+        mesh->MoverMesh(mesh,prueba);
+        prueba.x+=0.05f;
+    }
+}*/
+
 // void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
 // {
 //   Vertice* vertice = mesh->verticeIni;
