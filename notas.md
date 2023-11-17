@@ -29,7 +29,7 @@ posición devuelva una estructura Mesh (tal como se especifica en el marco teór
 4. Implementar una función llamada CrearCubo que, recibiendo su ancho, su alto, la profundidad y
 la posición central, devuelva una estructura Mesh (tal como se especifica en el marco teórico). //Walter, sale de crearRectacgulo anadirVertice() anda mal
 
-5. Implementar una función llamada PintarRectangulo que reciba una estructura Mesh y pinte los
+<!--5. Implementar una función llamada PintarRectangulo que reciba una estructura Mesh y pinte los
 ejes del rectangulo de color blanco. Debe utilizar la función PintarRectangulo. (usa el 2, pero para bordes) //Walter
 <!-- 
 6. Implementar una función llamada MoverMesh, que reciba un Mesh y una posición destino xyz. //Aless -->

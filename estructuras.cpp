@@ -124,7 +124,8 @@ void Mazacota::dibujarMesh(){
     Vector3 vertice1 = getVertice(temp->vertice1);
     Vector3 vertice2 = getVertice(temp->vertice2);
     Vector3 vertice3 = getVertice(temp->vertice3);
-    DrawTriangle3D(vertice1, vertice2, vertice3, BLUE);
+    DrawTriangle3D(vertice1, vertice2, vertice3, BLUE); //Esto es lo que dibuja
+
 
     //Pasar estas funciones a la funcion pintar triangulo
     DrawLine3D(vertice1, vertice2, BLACK);
@@ -140,23 +141,66 @@ bool Mazacota::verificarMesh(Mazacota *mesh)
 {
   Triangulo* triActual=mesh->trianguloIni;
   Triangulo* triComparador=mesh->trianguloIni;
-  bool valido = false;
+  bool validoPrincipal = false;
   while (triActual != nullptr){
+    bool valido = false;
     while (triComparador != nullptr){ 
       if (triActual == triComparador){
         break;
-      }else if((triComparador->vertice1 == triActual->vertice1 && (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3)) ||
-               (triComparador->vertice1 == triActual->vertice2 && (triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice1)) ||
-               (triComparador->vertice1 == triActual->vertice3 && (triComparador->vertice2 == triActual->vertice1 || triComparador->vertice3 == triActual->vertice2))){
-        valido = true;
-        break;
+      }else if(triComparador->vertice1 == triActual->vertice1){
+        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+          valido = true;
+          break;
+        } 
+      }else if(triComparador->vertice1 == triActual->vertice2){
+        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+          valido = true;
+          break;
+        } 
+      }else if(triComparador->vertice1 == triActual->vertice3){
+        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+          valido = true;
+          break;
+        } 
+      }else if(triComparador->vertice2 == triActual->vertice1){
+        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+          valido = true;
+          break;
+        } 
+      }else if(triComparador->vertice2 == triActual->vertice2){
+        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+          valido = true;
+          break;
+        } 
+      }else if(triComparador->vertice2 == triActual->vertice3){
+        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+          valido = true;
+          break;
+        } 
+      }else if(triComparador->vertice3 == triActual->vertice1){
+        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+          valido = true;
+          break;
+        } 
+      }else if(triComparador->vertice3 == triActual->vertice2){
+        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+          valido = true;
+          break;
+        } 
+      }else if(triComparador->vertice3 == triActual->vertice3){
+        if (triComparador->vertice2 == triActual->vertice2 || triComparador->vertice2 == triActual->vertice3 || triComparador->vertice3 == triActual->vertice2 || triComparador->vertice3 == triActual->vertice3){
+          valido = true;
+          break;
+        } 
+      }else{
+        valido = false;
       }
       triComparador = triComparador->siguiente;
     } 
     triActual = triActual->siguiente;
     triComparador=mesh->trianguloIni;
-  } 
-  return valido; 
+  }
+  return validoPrincipal; 
 }
 
 Mazacota* Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion, int plano)
@@ -228,9 +272,7 @@ void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
     vertice->pos.z = vertice->pos.z + diferenciaZ;
 
     vertice=vertice->siguiente;
-
   }
-  
 }
 
 /*void Mazacota::Animar(Mazacota* mesh,)
@@ -244,11 +286,66 @@ void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
     }
 }*/
 
-void Mazacota::crearCubo(int largo, Vector3 posicion) {
+// void Mazacota::MoverMesh(Mazacota *mesh, Vector3 destino)
+// {
+//   Vertice* vertice = mesh->verticeIni;
+//   float diferenciaX = destino.x - vertice->pos.x;
+//   float diferenciaY = destino.y - vertice->pos.y;
+//   float diferenciaZ = destino.z - vertice->pos.z;
+//   while (vertice!=nullptr)
+//   {
+//     vertice->pos.x = vertice->pos.x + diferenciaX;
+//     vertice->pos.y = vertice->pos.y + diferenciaY;
+//     vertice->pos.z = vertice->pos.z + diferenciaZ;
+
+//     vertice=vertice->siguiente;
+
+//   }
+  
+// }
+
+Mazacota* Mazacota::crearCubo (int largo, Vector3 posicion) {
+  Mazacota* cubo = new Mazacota();
+
   Vector3 v1 = {posicion.x,posicion.y,posicion.z};
   Vector3 v2 = {posicion.x+largo,posicion.y,posicion.z};
   Vector3 v3 = {posicion.x,posicion.y+largo,posicion.z};
   Vector3 v4 = {posicion.x+largo,posicion.y+largo,posicion.z};
+
+
+  Vector3 v5 = {posicion.x,posicion.y,posicion.z+largo};
+  Vector3 v6 = {posicion.x+largo,posicion.y,posicion.z+largo};
+  Vector3 v7 = {posicion.x,posicion.y+largo,posicion.z+largo};
+  Vector3 v8 = {posicion.x+largo,posicion.y+largo,posicion.z+largo};
+
+  cubo->anadirVertice(v1);
+  cubo->anadirVertice(v2);
+  cubo->anadirVertice(v3);
+  cubo->anadirVertice(v4);
+  cubo->anadirVertice(v5);
+  cubo->anadirVertice(v6);
+  cubo->anadirVertice(v7);
+  cubo->anadirVertice(v8);
+
+  cubo->anadirTriangulo(v1,v2,v3);
+  cubo->anadirTriangulo(v4,v3,v2);
+
+
+  cubo->anadirTriangulo(v8,v3,v7);
+  cubo->anadirTriangulo(v4,v3,v8);
+
+  cubo->anadirTriangulo(v4,v8,v6);
+  cubo->anadirTriangulo(v6,v2,v4);
+
+  //cuidado con estos de abajo
+
+  cubo->anadirTriangulo(v6,v1,v2);
+  cubo->anadirTriangulo(v1,v6,v5);
+
+  cubo->anadirTriangulo(v3,v1,v5);
+  cubo->anadirTriangulo(v5,v7,v3);
+
+  return cubo;
 }
 
 
