@@ -63,8 +63,8 @@ class Mazacota{ //necesario cambiar nombre de clase
     //requisitos (por el momento los pondre aquí, pero si quieren mejorar el orden despues podemos
     // moverlos a otros .h)
     bool verificarMesh(Mazacota* mesh);
+    void PintarTriangulo(Mazacota* triangulo);
     Mazacota* crearRectangulo(int ancho, int alto, Vector3 posicion, int plano);
-
     void PintarRectangulo(Mazacota* mesh);
     void MoverMesh(Mazacota* mesh, Vector3 destino);
     //void Animar(Mazacota* mesh);  

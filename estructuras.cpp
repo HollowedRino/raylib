@@ -204,6 +204,22 @@ bool Mazacota::verificarMesh(Mazacota *mesh)
   return validoPrincipal; 
 }
 
+void Mazacota::PintarTriangulo(Mazacota *triangulo)
+{
+  Triangulo* temp = triangulo->trianguloIni;
+  while (temp != nullptr){
+    Vector3 vertice1 = getVertice(temp->vertice1);
+    Vector3 vertice2 = getVertice(temp->vertice2);
+    Vector3 vertice3 = getVertice(temp->vertice3);
+    //Pasar estas funciones a la funcion pintar triangulo
+    DrawLine3D(vertice1, vertice2, BLACK);
+    DrawLine3D(vertice1, vertice3, BLACK);
+    DrawLine3D(vertice2, vertice3, BLACK);
+
+    temp = temp->siguiente;
+  }
+}
+
 Mazacota* Mazacota::crearRectangulo(int ancho, int alto, Vector3 posicion, int plano)
 {
   Mazacota* rectangulo = new Mazacota();
