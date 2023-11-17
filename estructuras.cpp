@@ -197,6 +197,7 @@ bool Mazacota::verificarMesh(Mazacota *mesh)
       }
       triComparador = triComparador->siguiente;
     } 
+    validoPrincipal = valido;
     triActual = triActual->siguiente;
     triComparador=mesh->trianguloIni;
   }
