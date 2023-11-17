@@ -59,7 +59,7 @@ int main(){
   {
       // Update
       //----------------------------------------------------------------------------------
-      UpdateCamera(&camera,CAMERA_FREE);
+      //UpdateCamera(&camera,CAMERA_FREE);
 
       if (IsKeyDown('Z')) camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };
        
