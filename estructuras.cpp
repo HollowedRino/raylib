@@ -62,13 +62,15 @@ int Mazacota::anadirVertice(Vector3 vertice){
   }while(puntero != nullptr);
 }
 
-bool Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
+int Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   Vector3 temp = Vector3CrossProduct(v2,v3);
   Vector3 res = Vector3CrossProduct(v1,temp);
-  if(res.z>=0){
-    return true;
+  if(res.z>0){
+    return 1;
+  }else if(res.z<0){
+    return 0;
   }else{
-    return false;
+    return 2;
   }
   
   

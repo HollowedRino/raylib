@@ -23,9 +23,9 @@ int main(){
   camera.fovy = 45.0f;                                // Camera field-of-view Y
   camera.projection = CAMERA_PERSPECTIVE;             // Camera projection type
 
-  Vector3 v1 = { 0.0f, 0.0f, 0.0f };
-  Vector3 v2 = { 0.0f, 0.0f, 9.0f };
-  Vector3 v3 = { 9.0f, 0.0f, 0.0f };
+  Vector3 v1 = { 1.0f, 2.0f, 3.0f };
+  Vector3 v2 = { 4.0f, 5.0f, 9.0f };
+  Vector3 v3 = { 9.0f, 6.0f, 7.0f };
   Vector3 v4 = { 0.0f, 9.0f, 0.0f };
   Vector3 v5 = { -9.0f, 9.0f, 0.0f };
   Vector3 v6 = { 7.0f, 0.0f, -3.0f};
@@ -34,9 +34,6 @@ int main(){
 
   Mazacota* mesh = new Mazacota();
   mesh->anadirTriangulo(v1,v2,v3);
-  mesh->anadirTriangulo(v2,v3,v4);
-  mesh->anadirTriangulo(v2,v4,v1);
-  mesh->anadirTriangulo(v5,v6,v1);
   std::cout<<mesh->verificarTriangulo(v1,v2,v3)<<std::endl;
   std::cout<<mesh->verificarTriangulo(v1,v3,v2)<<std::endl;
   std::cout << mesh->verificarMesh(mesh) << std::endl;
@@ -80,12 +77,12 @@ int main(){
           ClearBackground(RAYWHITE);
 
           BeginMode3D(camera);
-              //rectangulo->PintarRectangulo(rectangulo);
-              //mesh->dibujarMesh();
+              rectangulo->PintarRectangulo(rectangulo);
+              mesh->dibujarMesh();
 
-              //DrawLine3D(v1,v2,ORANGE);
-              //DrawLine3D(v1,v3,GREEN);
-              //DrawLine3D(v1,v4,RED);
+              DrawLine3D(v1,v2,ORANGE);
+              DrawLine3D(v1,v3,GREEN);
+              DrawLine3D(v1,v4,RED);
 
               DrawGrid(20, 1.0f);
 
