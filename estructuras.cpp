@@ -328,23 +328,34 @@ Mazacota* Mazacota::crearCubo (int largo, Vector3 posicion) {
   cubo->anadirVertice(v7);
   cubo->anadirVertice(v8);
 
-  cubo->anadirTriangulo(v1,v2,v3);
-  cubo->anadirTriangulo(v4,v3,v2);
 
+  //Bien
+  cubo->anadirTriangulo(v1,v3,v2); //anda bien
+  cubo->anadirTriangulo(v2,v3,v4);
+  
 
+  //arriba
   cubo->anadirTriangulo(v8,v3,v7);
   cubo->anadirTriangulo(v4,v3,v8);
 
+  //2 Bn
   cubo->anadirTriangulo(v4,v8,v6);
   cubo->anadirTriangulo(v6,v2,v4);
 
   //cuidado con estos de abajo
 
-  cubo->anadirTriangulo(v6,v1,v2);
-  cubo->anadirTriangulo(v1,v6,v5);
+  //3 (alr)
+  cubo->anadirTriangulo(v6,v8,v7);
+  cubo->anadirTriangulo(v5,v6,v7);
 
+  //4 (bn)
   cubo->anadirTriangulo(v3,v1,v5);
   cubo->anadirTriangulo(v5,v7,v3);
+
+
+  //abajo
+  cubo->anadirTriangulo(v1,v2,v6);
+  cubo->anadirTriangulo(v6,v5,v1);
 
   return cubo;
 }

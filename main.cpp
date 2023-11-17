@@ -80,8 +80,8 @@ int main(){
           ClearBackground(RAYWHITE);
 
           BeginMode3D(camera);
-              rectangulo->PintarRectangulo(rectangulo);
-              mesh->dibujarMesh();
+              //rectangulo->PintarRectangulo(rectangulo);
+              //mesh->dibujarMesh();
 
               //DrawLine3D(v1,v2,ORANGE);
               //DrawLine3D(v1,v3,GREEN);
