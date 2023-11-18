@@ -70,23 +70,30 @@ int main(){
   SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
   //--------------------------------------------------------------------------------------
   int esperar = 0;
+  int cambiar = 0;
   // Main game loop
   while (!WindowShouldClose())        // Detect window close button or ESC key
   {
       // Update
       //----------------------------------------------------------------------------------
-      //UpdateCamera(&camera,CAMERA_FREE);
+      UpdateCamera(&camera,CAMERA_FREE);
 
       if (IsKeyDown('Z')) camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };
       //=============AnimarMesh============================
-      /*
-      if (IsKeyPressed(KEY_Q)) pause = !pause;
+      if (IsKeyPressed(KEY_ENTER)){
+        cambiar += 1;
+        std::cout << cambiar << std::endl;
+      }
+      if(cambiar == 7){
+        if (IsKeyPressed(KEY_Q)) pause = !pause;
+        
 
-      if(!pause)
-      {
-          mesh->MoverMesh(mesh,prueba);
-          prueba.x+=0.05f;
-      }*/
+        if(!pause)
+        {
+            mesh->MoverMesh(mesh,prueba);
+            prueba.x+=0.05f;
+        }
+      }
       //=============AnimarMesh============================
       //----------------------------------------------------------------------------------
 
@@ -98,7 +105,40 @@ int main(){
           ClearBackground(RAYWHITE);
 
           BeginMode3D(camera);
+              if (cambiar == 0){
+                DrawGrid(20, 1.0f);
+              }else if (cambiar == 1){
+                mesh->dibujarMesh();
+              }else if(cambiar == 2){
+                triangulo->dibujarMesh();
+                triangulo->PintarTriangulo(triangulo);
+              }else if (cambiar == 3){
+                rectangulo->dibujarMesh();
+              }else if(cambiar == 4){
+                cubo->dibujarMesh();
+              }else if (cambiar == 5){
+                rectangulo->dibujarMesh();
+                rectangulo->PintarRectangulo(rectangulo);
+              }else if (cambiar == 6){
+                mesh->dibujarMesh();
+                if (esperar < 15){
+                  esperar++;
+                }else if (esperar == 15){
+                  mesh->MoverMesh(mesh,pruebaMover);
+                  esperar++;
+                }
+              }else if (cambiar == 7) {
+                mesh->dibujarMesh();
+              }else{
+                cambiar = 0;
+              }
               
+              
+              
+              
+              
+              
+
               //=============VerificarMesh============================
               //mesh->dibujarMesh();
               //=============VerificarMesh============================
