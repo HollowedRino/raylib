@@ -32,14 +32,18 @@ int main(){
   Vector3 pruebaMover= {1.0f,1.0f,1.0f};
   Vector3 prueba = { 0.0f, 0.0f, 0.0f };
 
+//=============VerificarMesh============================
   Mazacota* mesh = new Mazacota();
   mesh->anadirTriangulo(v1,v2,v3);
   mesh->anadirTriangulo(v2,v3,v4); 
   mesh->anadirTriangulo(v2,v4,v1);
+  mesh->anadirTriangulo(v4,v2,v5);
+  //mesh->anadirTriangulo(v3,v6,v5);
   //mesh->anadirTriangulo(v5,v6,v1);
-  std::cout<<mesh->verificarTriangulo(v1,v2,v3)<<std::endl;
-  std::cout<<mesh->verificarTriangulo(v1,v3,v2)<<std::endl;
+  std::cout << mesh->verificarTriangulo(v2,v4,v1) << std::endl;
   std::cout << mesh->verificarMesh(mesh) << std::endl;
+//=============VerificarMesh============================
+
   //mesh->crearRectangulo(3,2,v1);
   Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,3);
   //rectangulo->MoverMesh(rectangulo,pruebaMover);
@@ -81,6 +85,8 @@ int main(){
 
           BeginMode3D(camera);
               rectangulo->PintarRectangulo(rectangulo);
+
+
               mesh->dibujarMesh();
 
               DrawLine3D(v1,v2,ORANGE);

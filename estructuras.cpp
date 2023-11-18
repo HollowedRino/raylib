@@ -78,7 +78,7 @@ int Mazacota::verificarTriangulo(Vector3 v1, Vector3 v2, Vector3 v3){
   }else if(res.x<0){
     return 4;
   }else{
-    return 2;
+    return 7;
   }
 }
 
@@ -151,7 +151,7 @@ bool Mazacota::verificarMesh(Mazacota *mesh){
     Vector3 vertice3 = getVertice(triActual->vertice3);
     int antihorario = mesh->verificarTriangulo(vertice1, vertice2, vertice3);
     
-    if(antihorario%2!=0){
+    if(antihorario != 7 || antihorario%2!=0){
       valido = false;
       while (triComparador != nullptr){
         valido = compartenAristas(triActual, triComparador);
