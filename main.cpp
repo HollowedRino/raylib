@@ -29,7 +29,7 @@ int main(){
   Vector3 v4 = { 1.0f, 9.0f, 1.0f };
   Vector3 v5 = { -9.0f, 9.0f, 1.0f };
   Vector3 v6 = { 7.0f, 0.0f, -3.0f};
-  Vector3 pruebaMover= {1.0f,1.0f,1.0f};
+  Vector3 pruebaMover= {0.0f,0.0f,10.0f};
   Vector3 prueba = { 0.0f, 0.0f, 0.0f };
 
 //=============VerificarMesh============================
@@ -40,16 +40,28 @@ int main(){
   mesh->anadirTriangulo(v4,v2,v5);
   //mesh->anadirTriangulo(v3,v6,v5);
   //mesh->anadirTriangulo(v5,v6,v1);
-  std::cout << mesh->verificarTriangulo(v2,v4,v1) << std::endl;
   std::cout << mesh->verificarMesh(mesh) << std::endl;
 //=============VerificarMesh============================
+//=============PintarTriangulo============================
+  Mazacota* triangulo = new Mazacota();
+  triangulo->anadirTriangulo(v1,v2,v3);
+//=============PintarTriangulo============================
+//=============CrearRectangulo============================ 
+  Mazacota* rectangulo;
+  rectangulo = rectangulo->crearRectangulo(6,4,v1,1);
+//=============CrearRectangulo============================
+//=============CrearCubo============================
+  Mazacota* cubo;
+  cubo = cubo->crearCubo(6,v1);
+//=============CrearCubo============================
+
 
   //mesh->crearRectangulo(3,2,v1);
-  Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,3);
+  //Mazacota* rectangulo = mesh->crearRectangulo(5,3,v1,3);
   //rectangulo->MoverMesh(rectangulo,pruebaMover);
-  std::cout << rectangulo->compartenAristas(rectangulo->trianguloIni,rectangulo->trianguloIni->siguiente)<<std::endl;
+  //std::cout << rectangulo->compartenAristas(rectangulo->trianguloIni,rectangulo->trianguloIni->siguiente)<<std::endl;
   //crear cubo
-  Mazacota* cubo = mesh->crearCubo(5,v1);
+  //Mazacota* cubo = mesh->crearCubo(5,v1);
 
   // std::cout << v2.x << ", " << v2.y << ", " << v2.z << std::endl;
 
@@ -57,7 +69,7 @@ int main(){
   bool pause = 0;
   SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
   //--------------------------------------------------------------------------------------
-
+  int esperar = 0;
   // Main game loop
   while (!WindowShouldClose())        // Detect window close button or ESC key
   {
@@ -66,14 +78,16 @@ int main(){
       //UpdateCamera(&camera,CAMERA_FREE);
 
       if (IsKeyDown('Z')) camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };
-       
+      //=============AnimarMesh============================
+      /*
       if (IsKeyPressed(KEY_Q)) pause = !pause;
 
       if(!pause)
       {
-          rectangulo->MoverMesh(rectangulo,prueba);
+          mesh->MoverMesh(mesh,prueba);
           prueba.x+=0.05f;
-      }
+      }*/
+      //=============AnimarMesh============================
       //----------------------------------------------------------------------------------
 
       // Draw
@@ -84,16 +98,37 @@ int main(){
           ClearBackground(RAYWHITE);
 
           BeginMode3D(camera);
-              rectangulo->PintarRectangulo(rectangulo);
+              
+              //=============VerificarMesh============================
+              //mesh->dibujarMesh();
+              //=============VerificarMesh============================
+              //=============PintarTriangulo============================              
+              //triangulo->dibujarMesh();
+              //triangulo->PintarTriangulo(triangulo);
+              //=============PintarTriangulo============================ 
+              //=============CrearRectangulo============================
+              //rectangulo->dibujarMesh();
+              //=============CrearRectangulo============================
+              //=============CrearCubo============================
+              //cubo->dibujarMesh();
+              //=============CrearCubo============================
+              //=============PintarRectangulo============================
+              //rectangulo->PintarRectangulo(rectangulo);
+              //=============PintarRectangulo============================
+              //=============MoverMesh============================
+              /*if (esperar < 15){
+                esperar++;
+              }else if (esperar == 15){
+                mesh->MoverMesh(mesh,pruebaMover);
+                esperar++;
+              }*/
+              //=============MoverMesh============================
 
+              //DrawLine3D(v1,v2,ORANGE);
+              //DrawLine3D(v1,v3,GREEN);
+              //DrawLine3D(v1,v4,RED);
 
-              mesh->dibujarMesh();
-
-              DrawLine3D(v1,v2,ORANGE);
-              DrawLine3D(v1,v3,GREEN);
-              DrawLine3D(v1,v4,RED);
-
-              DrawGrid(20, 1.0f);
+              //DrawGrid(20, 1.0f);
 
           EndMode3D();
 
